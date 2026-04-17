@@ -1,0 +1,4668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus EarthRanger – ICF Honduras</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1a7a4a;
+    --verde-claro: #27ae60;
+    --verde-oscuro: #0d5c35;
+    --verde-bg: #e8f5ee;
+    --amarillo: #f4c430;
+    --amarillo-oscuro: #d4a800;
+    --azul: #1565c0;
+    --azul-claro: #e3f0ff;
+    --rojo: #c62828;
+    --rojo-claro: #ffebee;
+    --naranja: #e65100;
+    --naranja-claro: #fff3e0;
+    --gris: #37474f;
+    --gris-claro: #f5f7f5;
+    --blanco: #ffffff;
+    --sombra: 0 4px 20px rgba(0,0,0,0.12);
+    --radio: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--gris-claro);
+    color: var(--gris);
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, rgba(13,92,53,0.85) 0%, rgba(26,122,74,0.85) 60%, rgba(46,204,113,0.85) 100%), url('campus_earthranger_assets/bg_area.jpg') center/cover;
+    background-attachment: fixed;
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .logo-circle {
+    width: 64px; height: 64px;
+    background: white;
+    color: var(--verde-oscuro);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    border: 3px solid rgba(255,255,255,0.8);
+  }
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .header-logo-img {
+    height: 56px;
+    object-fit: contain;
+  }
+  .logo-circle {
+    display: none;
+  }
+  .header-branding {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 0;
+    padding-top: 12px;
+  }
+  .header-company-logo {
+    height: 48px;
+    object-fit: contain;
+    filter: brightness(1.15) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  .header-text h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    font-weight: 800;
+  }
+  .header-text p,
+  .header-text .subline {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .header-text .subline {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.88);
+  }
+  .brand-badges {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: auto;
+    font-size: 0.72rem;
+  }
+  .brand-badge {
+    background: rgba(255,255,255,0.18);
+    color: white;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .brand-badge.er-badge { background: rgba(255,255,255,0.28); }
+  .brand-badge.icf-badge { background: rgba(255,255,255,0.18); }
+  .progreso-global {
+    position: absolute;
+    top: 16px;
+    right: 28px;
+    text-align: right;
+    background: rgba(255,255,255,0.15);
+    padding: 12px 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+  }
+  .progreso-global .label { font-size: 0.8rem; opacity: 0.85; font-weight: 600; }
+  .progreso-global .barra-cont {
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    height: 12px;
+    width: 160px;
+    margin-top: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .progreso-global .barra-fill {
+    background: linear-gradient(90deg, var(--amarillo) 0%, #f9d71c 100%);
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(244,196,48,0.5);
+  }
+  .progreso-global .pct { font-size: 0.85rem; font-weight: 800; margin-top: 4px; }
+
+  /* ===== LAYOUT ===== */
+  .app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: sticky;
+    top: 88px;
+    background: white;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+  }
+  .sidebar-title {
+    background: var(--verde);
+    color: white;
+    padding: 14px 18px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .modulo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .modulo-item:hover { background: var(--verde-bg); }
+  .modulo-item.activo { background: var(--verde-bg); border-left: 4px solid var(--verde); }
+  .modulo-item.completado .mod-icon { background: var(--verde-claro); }
+  .mod-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--gris-claro);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .mod-info { flex: 1; min-width: 0; }
+  .mod-nombre { font-weight: 700; font-size: 0.82rem; line-height: 1.2; }
+  .mod-lecciones { font-size: 0.72rem; color: #888; margin-top: 2px; }
+  .mod-check { font-size: 18px; flex-shrink: 0; }
+
+  /* ===== MAIN CONTENT ===== */
+  .main { min-width: 0; }
+
+  /* ===== BIENVENIDA ===== */
+  .bienvenida {
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-claro) 100%);
+    color: white;
+    border-radius: var(--radio);
+    padding: 36px 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bienvenida::after {
+    content: '🌿';
+    position: absolute;
+    right: 24px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    opacity: 0.18;
+  }
+  .bienvenida h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  .bienvenida p { font-size: 1rem; opacity: 0.92; max-width: 480px; line-height: 1.5; }
+  .bienvenida .stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-badge {
+    background: rgba(255,255,255,0.18);
+    border-radius: 12px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stat-badge .num { font-size: 1.5rem; font-weight: 900; line-height: 1; }
+  .stat-badge .lbl { font-size: 0.75rem; opacity: 0.85; }
+
+  /* ===== LECCIÓN CARD ===== */
+  .leccion-panel {
+    background: white;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
+  }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+  .leccion-header {
+    background: linear-gradient(90deg, var(--verde-oscuro), var(--verde));
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .leccion-header .big-icon { font-size: 40px; }
+  .leccion-header h2 { font-family: 'Baloo 2', cursive; font-size: 1.4rem; line-height: 1.2; }
+  .leccion-header p { font-size: 0.85rem; opacity: 0.85; margin-top: 4px; }
+
+  /* ===== PASOS ===== */
+  .pasos-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 14px 20px;
+    gap: 8px;
+    border-bottom: 2px solid var(--verde-bg);
+    scrollbar-width: thin;
+  }
+  .paso-btn {
+    flex-shrink: 0;
+    padding: 7px 16px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .paso-btn:hover { border-color: var(--verde); color: var(--verde); }
+  .paso-btn.activo { background: var(--verde); color: white; border-color: var(--verde); }
+  .paso-btn.hecho { background: var(--verde-bg); color: var(--verde); border-color: var(--verde-claro); }
+  .paso-btn.hecho::before { content: '✓ '; }
+
+  .paso-contenido {
+    padding: 28px 28px 20px;
+  }
+  .paso-titulo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.25rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .paso-titulo .num-circulo {
+    width: 32px; height: 32px;
+    background: var(--verde);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-bottom: 8px;
+  }
+
+  /* ===== BLOQUES DE CONTENIDO ===== */
+  .bloque {
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+  .bloque.info { background: var(--azul-claro); border-left: 5px solid var(--azul); }
+  .bloque.tip { background: var(--naranja-claro); border-left: 5px solid var(--naranja); }
+  .bloque.advertencia { background: var(--rojo-claro); border-left: 5px solid var(--rojo); }
+  .bloque.exito { background: var(--verde-bg); border-left: 5px solid var(--verde-claro); }
+  .bloque .bloque-titulo { font-weight: 800; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .bloque ul { padding-left: 20px; margin-top: 8px; }
+  .bloque ul li { margin-bottom: 6px; }
+
+  /* ===== PASOS VISUALES (lista con número) ===== */
+  .pasos-lista { list-style: none; }
+  .pasos-lista li {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .pasos-lista .n {
+    width: 36px; height: 36px;
+    background: var(--amarillo);
+    color: var(--gris);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    box-shadow: 0 2px 6px rgba(244,196,48,0.4);
+  }
+  .pasos-lista .texto strong { display: block; font-size: 1rem; font-weight: 800; margin-bottom: 3px; }
+  .pasos-lista .texto span { font-size: 0.92rem; color: #555; line-height: 1.5; }
+
+  /* ===== TARJETAS ICONO ===== */
+  .iconos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .icono-card {
+    background: var(--gris-claro);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .icono-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+  .icono-card .icono { font-size: 32px; margin-bottom: 8px; }
+  .icono-card .nombre { font-weight: 800; font-size: 0.82rem; margin-bottom: 4px; }
+  .icono-card .desc { font-size: 0.75rem; color: #666; line-height: 1.3; }
+
+  /* ===== FORMULARIO SIMULADO ===== */
+  .formulario-sim {
+    background: #fafafa;
+    border: 2px solid #e0e0e0;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .formulario-sim h4 {
+    font-weight: 800;
+    color: var(--verde-oscuro);
+    margin-bottom: 14px;
+    font-size: 1rem;
+  }
+  .campo-sim {
+    margin-bottom: 14px;
+  }
+  .campo-sim label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+    color: var(--gris);
+  }
+  .campo-sim label .req { color: var(--rojo); }
+  .campo-sim input, .campo-sim select, .campo-sim textarea {
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .campo-sim input:focus, .campo-sim select:focus, .campo-sim textarea:focus {
+    border-color: var(--verde);
+  }
+  .campo-sim textarea { resize: vertical; min-height: 70px; }
+  .campo-sim .campo-nota { font-size: 0.75rem; color: #888; margin-top: 4px; }
+
+  /* ===== QUIZ ===== */
+  .quiz-section {
+    background: linear-gradient(135deg, #fff9e6, #fffde7);
+    border: 2px solid var(--amarillo);
+    border-radius: 16px;
+    padding: 22px;
+    margin-top: 8px;
+  }
+  .quiz-section h3 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--amarillo-oscuro);
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pregunta { margin-bottom: 20px; }
+  .pregunta p { font-weight: 700; font-size: 0.95rem; margin-bottom: 10px; line-height: 1.4; }
+  .opciones { display: flex; flex-direction: column; gap: 8px; }
+  .opcion-btn {
+    padding: 11px 16px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opcion-btn:hover:not(:disabled) { border-color: var(--azul); background: var(--azul-claro); }
+  .opcion-btn.correcta { border-color: var(--verde-claro); background: var(--verde-bg); color: var(--verde-oscuro); }
+  .opcion-btn.incorrecta { border-color: var(--rojo); background: var(--rojo-claro); color: var(--rojo); }
+  .opcion-btn .letra {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: #eee;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .opcion-btn.correcta .letra { background: var(--verde-claro); color: white; }
+  .opcion-btn.incorrecta .letra { background: var(--rojo); color: white; }
+  .feedback-msg {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: none;
+  }
+  .feedback-msg.show { display: block; }
+  .feedback-msg.ok { background: var(--verde-bg); color: var(--verde-oscuro); }
+  .feedback-msg.mal { background: var(--rojo-claro); color: var(--rojo); }
+  .quiz-btn {
+    margin-top: 16px;
+    padding: 13px 28px;
+    background: var(--amarillo);
+    color: var(--gris);
+    border: none;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .quiz-btn:hover { background: var(--amarillo-oscuro); color: white; transform: scale(1.03); }
+
+  /* ===== NAVEGACIÓN INFERIOR ===== */
+  .nav-inferior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    border-top: 2px solid var(--verde-bg);
+    margin-top: 8px;
+    gap: 12px;
+  }
+  .btn-nav {
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-nav.primario { background: var(--verde); color: white; box-shadow: 0 4px 14px rgba(26,122,74,0.3); }
+  .btn-nav.primario:hover { background: var(--verde-oscuro); transform: translateY(-2px); }
+  .btn-nav.secundario { background: var(--gris-claro); color: var(--gris); }
+  .btn-nav.secundario:hover { background: #e0e0e0; }
+  .btn-nav:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
+  .barra-progreso-leccion {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 20px;
+    height: 8px;
+    overflow: hidden;
+    max-width: 200px;
+  }
+  .barra-progreso-fill {
+    background: var(--verde-claro);
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+  }
+
+  /* ===== PANTALLA INICIO ===== */
+  .pantalla-inicio { animation: fadeIn 0.4s ease; }
+  .modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .modulo-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .modulo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.15); border-color: var(--verde-claro); }
+  .modulo-card .mc-icon { font-size: 40px; margin-bottom: 12px; }
+  .modulo-card h3 { font-family: 'Baloo 2', cursive; font-size: 1rem; color: var(--verde-oscuro); margin-bottom: 6px; line-height: 1.2; }
+  .modulo-card p { font-size: 0.78rem; color: #777; line-height: 1.4; }
+  .modulo-card .mc-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--verde-bg);
+    color: var(--verde);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+  .modulo-card.completado-card { border-color: var(--verde-claro); }
+  .modulo-card.completado-card::after {
+    content: '✓';
+    position: absolute;
+    bottom: -10px; right: -10px;
+    width: 50px; height: 50px;
+    background: var(--verde-claro);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    color: white;
+    font-weight: 900;
+  }
+
+  /* ===== SEPARADOR ===== */
+  .sep { height: 2px; background: var(--verde-bg); margin: 18px 0; border-radius: 2px; }
+
+  /* ===== TABLA ===== */
+  table.tabla-info { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+  table.tabla-info th { background: var(--verde); color: white; padding: 10px 14px; font-size: 0.85rem; text-align: left; }
+  table.tabla-info td { padding: 10px 14px; font-size: 0.88rem; border-bottom: 1px solid #f0f0f0; }
+  table.tabla-info tr:last-child td { border-bottom: none; }
+  table.tabla-info tr:nth-child(even) td { background: var(--verde-bg); }
+
+  /* ===== FOTO GUÍA ===== */
+  .foto-guia {
+    background: #f5f5f5;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+  }
+  .foto-guia .icono-grande { font-size: 52px; flex-shrink: 0; }
+  .foto-guia .descripcion h4 { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+  .foto-guia .descripcion p { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 750px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: static; display: none; }
+    .bienvenida { padding: 22px 18px; }
+    .bienvenida h2 { font-size: 1.3rem; }
+    .header-inner { flex-wrap: wrap; }
+    .progreso-global { margin-left: 0; }
+    
+    /* Estilos responsivos para certificado en móviles */
+    .certificate {
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+    .certificate-title {
+      font-size: 1.5rem;
+    }
+    .certificate-subtitle {
+      font-size: 0.9rem;
+    }
+    .certificate-name {
+      font-size: 1.3rem;
+    }
+    .certificate-score {
+      font-size: 1.3rem;
+    }
+    .certificate-text {
+      font-size: 0.95rem;
+    }
+    .certificate-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cert-btn {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* ===== LOGRO ===== */
+  .logro-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    display: none;
+  }
+  .logro-modal.show { display: flex; animation: fadeIn 0.3s ease; }
+  .logro-box {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 36px;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .logro-box .trofeo { font-size: 64px; margin-bottom: 12px; animation: bounce 0.6s ease; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-20px)} }
+  .logro-box h2 { font-family: 'Baloo 2', cursive; font-size: 1.4rem; color: var(--verde-oscuro); margin-bottom: 8px; }
+  .logro-box p { font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 20px; }
+  .logro-cerrar {
+    padding: 12px 32px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .logro-cerrar:hover { background: var(--verde-oscuro); }
+
+  .tag-tipo {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .tag-movil { background: #e8f5e9; color: #2e7d32; }
+  .tag-web { background: #e3f2fd; color: #1565c0; }
+
+  /* ===== SIMULADOR DE TELÉFONO ===== */
+  .sim-wrapper {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .sim-phone-col { flex-shrink: 0; }
+  .sim-guide-col { flex: 1; min-width: 240px; }
+
+  /* Carcasa del teléfono */
+  .phone-shell {
+    width: 270px;
+    background: #1a1a2e;
+    border-radius: 36px;
+    padding: 14px 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.08);
+    position: relative;
+    user-select: none;
+  }
+  .phone-notch {
+    width: 90px;
+    height: 22px;
+    background: #1a1a2e;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto 6px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .phone-notch .cam { width: 8px; height: 8px; border-radius: 50%; background: #333; }
+  .phone-notch .speaker { width: 30px; height: 4px; border-radius: 4px; background: #2a2a3e; }
+  .phone-screen {
+    background: #0f1923;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 520px;
+    position: relative;
+  }
+  .phone-home-bar {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    margin: 10px auto 4px;
+  }
+
+  /* Pantallas de la app dentro del teléfono */
+  .app-screen {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    background: #f5f7f5;
+    animation: slideIn 0.3s ease;
+    overflow: hidden;
+  }
+  .app-screen.active { display: flex; }
+  @keyframes slideIn { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+
+  /* Barra de estado del teléfono */
+  .status-bar {
+    background: #1a7a4a;
+    color: white;
+    font-size: 9px;
+    padding: 4px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .status-bar .sb-right { display: flex; gap: 5px; align-items: center; }
+
+  /* Header de la app */
+  .app-header {
+    background: #1a7a4a;
+    color: white;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .app-header .back-btn {
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.85;
+    line-height: 1;
+  }
+  .app-header h3 {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .app-header .logo-small {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  /* Contenido scrolleable */
+  .app-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.1) transparent;
+  }
+  .app-body::-webkit-scrollbar { width: 3px; }
+  .app-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+
+  /* Barra inferior de la app */
+  .app-bottom-nav {
+    background: white;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    padding: 6px 0 4px;
+    flex-shrink: 0;
+  }
+  .app-bottom-nav .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 7px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .app-bottom-nav .nav-item .ni-icon { font-size: 18px; }
+  .app-bottom-nav .nav-item.active { color: #1a7a4a; }
+
+  /* Pantalla de login */
+  .login-screen { background: linear-gradient(160deg, #0d5c35 0%, #1a7a4a 60%, #27ae60 100%) !important; }
+  .login-logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 20px 16px;
+  }
+  .login-logo-area .er-logo {
+    width: 70px; height: 70px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255,255,255,0.25);
+  }
+  .login-logo-area .er-logo img {
+    width: 90%;
+    height: auto;
+  }
+  .login-logo-area h2 { color: white; font-size: 16px; font-weight: 900; }
+  .login-logo-area p { color: rgba(255,255,255,0.7); font-size: 9px; margin-top: 3px; }
+  .login-form-area {
+    background: white;
+    border-radius: 20px 20px 0 0;
+    flex: 1;
+    padding: 18px 16px;
+  }
+  .login-form-area h3 { font-size: 13px; font-weight: 800; color: #333; margin-bottom: 14px; }
+  .sim-field {
+    margin-bottom: 12px;
+  }
+  .sim-field label { font-size: 10px; font-weight: 700; color: #555; display: block; margin-bottom: 4px; }
+  .sim-input {
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 9px 11px;
+    font-size: 11px;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+  }
+  .sim-input:focus { border-color: #1a7a4a; background: white; }
+  .sim-input.filled { border-color: #27ae60; background: #f0fff4; }
+  .sim-select {
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 9px 11px;
+    font-size: 11px;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    background: #fafafa;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    cursor: pointer;
+  }
+  .sim-select:focus { border-color: #1a7a4a; }
+  .sim-btn {
+    width: 100%;
+    padding: 11px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 6px;
+  }
+  .sim-btn.primary { background: #1a7a4a; color: white; box-shadow: 0 4px 12px rgba(26,122,74,0.35); }
+  .sim-btn.primary:hover { background: #0d5c35; transform: translateY(-1px); }
+  .sim-btn.secondary { background: #f0f0f0; color: #555; }
+  .sim-btn.danger { background: #c62828; color: white; }
+  .sim-btn.warning { background: #f4c430; color: #333; }
+  .sim-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+  /* Pantalla de mapa */
+  .fake-map {
+    height: 220px;
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 30%, #81c784 60%, #66bb6a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .fake-map::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .map-road {
+    position: absolute;
+    background: rgba(255,255,255,0.6);
+    border-radius: 4px;
+  }
+  .map-you {
+    position: absolute;
+    width: 24px; height: 24px;
+    background: #1565c0;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 4px rgba(21,101,192,0.3);
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-map 2s infinite;
+  }
+  @keyframes pulse-map {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(21,101,192,0.3); }
+    50% { box-shadow: 0 0 0 10px rgba(21,101,192,0.1); }
+  }
+  .map-event-dot {
+    position: absolute;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .map-label {
+    position: absolute;
+    bottom: 8px; left: 8px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 8px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+  .map-track-line {
+    position: absolute;
+    background: rgba(21,101,192,0.6);
+    transform-origin: top left;
+    border-radius: 3px;
+    height: 3px;
+    display: none;
+  }
+
+  /* Categorías de eventos */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cat-card {
+    border-radius: 12px;
+    padding: 12px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 2px solid transparent;
+  }
+  .cat-card:hover { transform: scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .cat-card.selected { border-color: #1a7a4a; box-shadow: 0 0 0 3px rgba(26,122,74,0.2); }
+  .cat-card .cat-icon { font-size: 24px; margin-bottom: 5px; }
+  .cat-card .cat-name { font-size: 9px; font-weight: 800; line-height: 1.2; }
+
+  /* Tipos de evento lista */
+  .event-list { list-style: none; }
+  .event-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .event-list li:hover { background: #f0fff4; }
+  .event-list li .ev-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .event-list li .ev-arrow { margin-left: auto; color: #bbb; }
+
+  /* Foto placeholder */
+  .foto-slots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .foto-slot {
+    width: 60px; height: 60px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    gap: 2px;
+    background: #fafafa;
+  }
+  .foto-slot:hover { border-color: #1a7a4a; background: #f0fff4; }
+  .foto-slot.filled { border: 2px solid #27ae60; background: #e8f5e9; }
+  .foto-slot.filled::after { content: '✓'; position: absolute; top: 2px; right: 4px; font-size: 10px; color: #27ae60; font-weight: 900; }
+  .foto-slot .slot-label { font-size: 7px; font-weight: 700; color: #999; text-align: center; line-height: 1.2; }
+
+  /* Toast dentro del teléfono */
+  .phone-toast {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    font-size: 10px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-weight: 700;
+  }
+  .phone-toast.show { opacity: 1; }
+
+  /* Indicador de "toca aquí" */
+  .tap-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(244,196,48,0.2);
+    border: 1.5px dashed #f4c430;
+    border-radius: 8px;
+    padding: 2px 7px;
+    font-size: 9px;
+    font-weight: 800;
+    color: #8a6000;
+    animation: blink-hint 1.5s infinite;
+    pointer-events: none;
+  }
+  @keyframes blink-hint { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* Guía lateral del simulador */
+  .sim-guide {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 100px;
+  }
+  .sim-guide h3 { font-family: 'Baloo 2', cursive; color: var(--verde-oscuro); font-size: 1rem; margin-bottom: 12px; }
+  .sim-step-list { list-style: none; }
+  .sim-step-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 0.82rem;
+  }
+  .sim-step-list li:last-child { border-bottom: none; }
+  .sim-step-list .ss-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #eee;
+    color: #999;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 900;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .sim-step-list li.done .ss-num { background: var(--verde-claro); color: white; }
+  .sim-step-list li.current .ss-num { background: var(--amarillo); color: #333; }
+  .sim-step-list .ss-text { color: #666; line-height: 1.4; }
+  .sim-step-list li.current .ss-text { color: #222; font-weight: 700; }
+  .sim-step-list li.done .ss-text { color: #aaa; text-decoration: line-through; }
+
+  .sim-congrats {
+    background: linear-gradient(135deg, var(--verde-bg), #d4edda);
+    border: 2px solid var(--verde-claro);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    margin-top: 14px;
+    display: none;
+  }
+  .sim-congrats.show { display: block; animation: fadeIn 0.5s ease; }
+  .sim-congrats .big { font-size: 2rem; margin-bottom: 6px; }
+  .sim-congrats p { font-size: 0.82rem; color: var(--verde-oscuro); font-weight: 700; }
+
+  .patrol-track {
+    display: none;
+    position: absolute;
+  }
+  .patrol-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #1565c0;
+    position: absolute;
+    animation: appear 0.3s ease forwards;
+  }
+  @keyframes appear { from{opacity:0;transform:scale(0)} to{opacity:1;transform:scale(1)} }
+
+  .sim-complete-banner {
+    background: linear-gradient(90deg, #1a7a4a, #27ae60);
+    color: white;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  /* ===== LOGIN SCREEN ===== */
+  .login-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde) 60%, #2ecc71 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .login-container.hidden { display: none; }
+  .login-box {
+    background: white;
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 420px;
+    width: 90%;
+    z-index: 10;
+    position: relative;
+  }
+  .login-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .login-header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--verde-oscuro);
+    margin-bottom: 8px;
+  }
+  .login-header p {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .login-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .login-logo {
+    height: 42px;
+    object-fit: contain;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--gris);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--verde);
+    background: var(--verde-bg);
+  }
+  .btn-login {
+    width: 100%;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+  }
+  .btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,122,74,0.4);
+  }
+  .login-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: #999;
+  }
+  .login-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('campus_earthranger_assets/bg_area.jpg') center/cover;
+    opacity: 0.15;
+    z-index: 1;
+  }
+
+  /* ===== CERTIFICATE ===== */
+  .certificate-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .certificate-container.hidden { 
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .certificate {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 50%, #f0fff4 100%);
+    border: 4px solid var(--verde-oscuro);
+    border-radius: 20px;
+    padding: 60px 80px;
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    position: relative;
+    animation: slideInCert 0.5s ease-out;
+  }
+  @keyframes slideInCert {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .certificate-header {
+    border-bottom: 3px solid var(--verde);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+  .certificate-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--verde-oscuro);
+    margin-bottom: 10px;
+    font-family: 'Baloo 2', cursive;
+  }
+  .certificate-subtitle {
+    font-size: 1.2rem;
+    color: var(--verde);
+    font-weight: 600;
+  }
+  .certificate-content {
+    margin: 40px 0;
+  }
+  .certificate-text {
+    font-size: 1.1rem;
+    color: var(--gris);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .certificate-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--verde-oscuro);
+    margin: 30px 0;
+    font-family: 'Baloo 2', cursive;
+    text-transform: uppercase;
+  }
+  .certificate-score {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--amarillo-oscuro);
+    margin: 20px 0;
+  }
+  .certificate-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--verde);
+    font-size: 0.95rem;
+    color: #666;
+  }
+  .certificate-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 10px;
+  }
+  .email-status {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: #37474f;
+    min-height: 22px;
+  }
+  .certificate-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .cert-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  .cert-btn-primary {
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde) 100%);
+    color: white;
+  }
+  .cert-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,122,74,0.4);
+  }
+  .cert-btn-secondary {
+    background: white;
+    color: var(--verde-oscuro);
+    border: 2px solid var(--verde-oscuro);
+  }
+  .cert-btn-secondary:hover {
+    background: var(--verde-bg);
+  }
+
+  /* ===== EVALUATION MODAL ===== */
+  .evaluation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+  }
+  .evaluation-container.hidden {
+    display: none;
+  }
+  .evaluation-modal {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 64px rgba(0,0,0,0.3);
+    animation: slideUp 0.4s ease;
+  }
+  .evaluation-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .evaluation-header h2 {
+    font-size: 1.75rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 8px;
+  }
+  .evaluation-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  .evaluation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .evaluation-question {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .evaluation-question label {
+    font-weight: 600;
+    color: var(--gris);
+    font-size: 1rem;
+  }
+  .rating-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: var(--verde-bg);
+    border-radius: 8px;
+  }
+  .rating-scale label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0;
+  }
+  .rating-scale input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+  }
+  .evaluation-question textarea {
+    padding: 12px;
+    border: 2px solid var(--verde);
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    resize: vertical;
+    color: var(--gris);
+  }
+  .evaluation-question textarea:focus {
+    outline: none;
+    border-color: var(--verde-oscuro);
+    box-shadow: 0 0 10px rgba(26,122,74,0.2);
+  }
+  #charCount {
+    font-size: 0.85rem;
+    color: #999;
+    text-align: right;
+  }
+  .evaluation-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .eval-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  .eval-btn-primary {
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde) 100%);
+    color: white;
+  }
+  .eval-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,122,74,0.4);
+  }
+  .eval-btn-secondary {
+    background: white;
+    color: var(--verde-oscuro);
+    border: 2px solid var(--verde-oscuro);
+  }
+  .eval-btn-secondary:hover {
+    background: var(--verde-bg);
+  }
+  .eval-status {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--verde);
+    min-height: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .evaluation-modal {
+      padding: 24px;
+      max-height: 90vh;
+    }
+    .evaluation-header h2 {
+      font-size: 1.5rem;
+    }
+    .evaluation-buttons {
+      flex-direction: column;
+    }
+    .eval-btn {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- PANTALLA DE LOGIN INICIAL -->
+<div class="login-container" id="loginContainer">
+  <div class="login-box">
+    <div class="login-header">
+      <h1>🌍 Espacio Interactivo EarthRanger</h1>
+      <p>SINAPH · Campus Virtual</p>
+      <div class="login-logos">
+        <img class="login-logo" src="campus_earthranger_assets/LOGO ICF Y GOBIERNO A COLOR.png" alt="ICF logo">
+        <img class="login-logo" src="campus_earthranger_assets/EarthRanger-Logo-2024_Ai2-H.png" alt="EarthRanger logo">
+      </div>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="nombre">Primer Nombre</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          name="nombre"
+          placeholder="Ej: Juan" 
+          autocomplete="given-name"
+          required
+          autofocus>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input 
+          type="text" 
+          id="apellido" 
+          name="apellido"
+          placeholder="Ej: Pérez" 
+          autocomplete="family-name"
+          required>
+      </div>
+      <button type="button" id="btnLogin" class="btn-login">Acceder al Campus →</button>
+    </form>
+    
+    <script>
+      // Inicializar event listener del botón de login - Compatible con iOS
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnLogin = document.getElementById('btnLogin');
+        if (btnLogin) {
+          btnLogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Botón login presionado');
+            iniciarCursoClickHandler();
+          });
+          
+          // Alternativa para touch events
+          btnLogin.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Touch en login detectado');
+            iniciarCursoClickHandler();
+          });
+        }
+      });
+    </script>
+    <div class="login-footer">
+      <p>Completa el curso y obtén tu certificado digital</p>
+    </div>
+  </div>
+  <div class="login-bg"></div>
+</div>
+
+<!-- HEADER -->
+<header id="headerMain" style="display:none;">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-text">
+        <h1>🌍 Espacio Interactivo EarthRanger</h1>
+        <p class="subline">SINAPH · Campus Virtual</p>
+      </div>
+      <div class="header-branding">
+        <img class="header-company-logo" src="campus_earthranger_assets/LOGO ICF Y GOBIERNO A COLOR.png" alt="ICF logo">
+        <img class="header-company-logo" src="campus_earthranger_assets/EarthRanger-Logo-2024_Ai2-H.png" alt="EarthRanger logo">
+      </div>
+    </div>
+    <div class="progreso-global">
+      <div class="label">Tu progreso total</div>
+      <div class="barra-cont"><div class="barra-fill" id="barraGlobal" style="width:0%"></div></div>
+      <div class="pct" id="pctGlobal">0%</div>
+    </div>
+  </div>
+</header>
+
+<!-- MODAL LOGRO -->
+<div class="logro-modal" id="logroModal">
+  <div class="logro-box">
+    <div class="trofeo" id="logroIcono">🏆</div>
+    <h2 id="logroTitulo">¡Módulo Completado!</h2>
+    <p id="logroDesc">Has terminado este módulo exitosamente.</p>
+    <button class="logro-cerrar" onclick="cerrarLogro()">¡Continuar! →</button>
+  </div>
+</div>
+
+<!-- CERTIFICATE MODAL -->
+<div class="certificate-container hidden" id="certificateContainer">
+  <div class="certificate">
+    <div class="certificate-header">
+      <div class="certificate-title">🎓 CERTIFICADO DE FINALIZACIÓN</div>
+      <div class="certificate-subtitle">Espacio Interactivo EarthRanger - SINAPH</div>
+    </div>
+    <div class="certificate-content">
+      <div class="certificate-text">Se otorga el presente certificado a</div>
+      <div class="certificate-name" id="certName">Nombre del Participante</div>
+      <div class="certificate-text">Por haber completado satisfactoriamente el</div>
+      <div class="certificate-text"><strong>Curso de Capacitación: Espacio Interactivo EarthRanger</strong></div>
+      <div class="certificate-text">Con una Nota Final de</div>
+      <div class="certificate-score" id="certScore">0%</div>
+    </div>
+    <div class="certificate-footer">
+      <div class="certificate-text">Emitido digitalmente en reconocimiento del aprendizaje y dedicación</div>
+      <div class="certificate-date" id="certDate">Fecha</div>
+    </div>
+    <p class="email-status" id="emailStatus"></p>
+    <p class="email-status" id="sharedStatus"></p>
+    <div class="certificate-buttons">
+      <button class="cert-btn cert-btn-primary" onclick="descargarCertificado()">📥 Descargar Certificado</button>
+      <button class="cert-btn cert-btn-secondary" onclick="exportarResultadosCSV()">📄 Exportar Resultados</button>
+      <button class="cert-btn cert-btn-secondary" onclick="reenviarNotificacion()">✉️ Reenviar notificación</button>
+      <button class="cert-btn cert-btn-secondary" onclick="enviarResultadosCompartidos()">📊 Guardar en registro central</button>
+      <button class="cert-btn cert-btn-secondary" onclick="volverAlInicio()">← Volver al Inicio</button>
+    </div>
+  </div>
+</div>
+
+<form id="emailForm" action="https://formsubmit.co/cpleites.jpch19@gmail.com" method="POST" target="emailIframe" style="display:none;">
+  <input type="hidden" name="_subject" id="emailSubject">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" id="emailNext" value="">
+  <input type="hidden" name="_replyto" id="emailReplyTo" value="no-reply@earthranger.test">
+  <input type="hidden" name="_honey" style="display:none">
+  <input type="hidden" name="Participante" id="emailParticipante">
+  <input type="hidden" name="Nota Final" id="emailNotaFinal">
+  <input type="hidden" name="Fecha" id="emailFecha">
+  <input type="hidden" name="Curso" id="emailCurso">
+</form>
+<iframe name="emailIframe" style="display:none;"></iframe>
+
+<div class="app" id="appMain" style="display:none;">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">📚 Módulos del Curso</div>
+    <div id="menuModulos"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="mainContent"></main>
+</div>
+
+<script>
+// ============================================================
+// CONFIGURACIÓN DE GOOGLE FORMS
+// ============================================================
+// Para obtener estos valores, sigue las instrucciones en:
+// CONFIGURACION_GOOGLE_FORMS.md
+
+const EMAIL_DESTINO = 'cpleites.jpch19@gmail.com'; // Cambiar por tu email
+const SHEET_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdkysfa3mnCDmAOIUhapq45kWpl4J98y651YiJDJc6cpJb1vw/formResponse'; // Formulario único
+const SHEET_FIELDS = {
+  'participante': 'entry.26631935',
+  'curso': 'entry.1393629046',
+  'nota': 'entry.1299123846',
+  'fecha': 'entry.1213114713',
+  'resumen': 'entry.1673283431'
+};
+
+const EVALUATION_FIELDS = {
+  'q1': 'entry.1285346885',
+  'q2': 'entry.524029954',
+  'q3': 'entry.1446918947',
+  'q4': 'entry.2109253187',
+  'q5': 'entry.1140194772',
+  'q6': 'entry.461730207'
+};
+
+const GOOGLE_FORM_FIELDS = {
+  ...SHEET_FIELDS,
+  ...EVALUATION_FIELDS
+};
+
+function appendGoogleFormMetadata(form) {
+  const meta = {
+    fvv: '1',
+    pageHistory: '0',
+    fbzx: String(Date.now())
+  };
+
+  Object.entries(meta).forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+}
+
+function collectEvaluationDefaults() {
+  const q1 = document.querySelector('input[name="q1"]:checked');
+  const q2 = document.querySelector('input[name="q2"]:checked');
+  const q3 = document.querySelector('input[name="q3"]:checked');
+  const q4 = document.querySelector('input[name="q4"]:checked');
+  const q5 = document.querySelector('input[name="q5"]:checked');
+  const q6 = document.getElementById('q6');
+
+  return {
+    q1: q1 ? q1.value : '3',
+    q2: q2 ? q2.value : '3',
+    q3: q3 ? q3.value : '3',
+    q4: q4 ? q4.value : '3',
+    q5: q5 ? q5.value : '3',
+    q6: q6 ? q6.value : ''
+  };
+}
+
+// Variables globales
+let nombreUsuario = '';
+let apellidoUsuario = '';
+let moduloActual = 0;
+let pasoActual = 0;
+let progreso = {}; // { moduloId: { pasoIdx: true/false } }
+let quizRespondido = {};
+let scoreModulos = {};
+
+// ============================================================
+// DATOS DEL CURSO
+// ============================================================
+const curso = {
+  modulos: [
+    {
+      id: 0,
+      icono: '🏠',
+      nombre: 'Inicio del Campus',
+      descripcion: 'Bienvenida y descripción del curso',
+      tipo: 'intro',
+      pasos: []
+    },
+    {
+      id: 1,
+      icono: '📱',
+      nombre: '¿Qué es EarthRanger Móvil?',
+      descripcion: 'Conoce la aplicación y para qué sirve',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: '¿Qué es EarthRanger?',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">ℹ️ Definición sencilla</div>
+              EarthRanger Móvil es una <strong>aplicación gratuita</strong> diseñada para ayudar en el <strong>monitoreo de la vida silvestre y los ecosistemas</strong>.
+            </div>
+            <div class="iconos-grid">
+              <div class="icono-card"><div class="icono">🐾</div><div class="nombre">Vida Silvestre</div><div class="desc">Registra avistamientos de animales</div></div>
+              <div class="icono-card"><div class="icono">🌲</div><div class="nombre">Ecosistemas</div><div class="desc">Monitorea bosques y áreas protegidas</div></div>
+              <div class="icono-card"><div class="icono">📍</div><div class="nombre">Ubicación GPS</div><div class="desc">Registra exactamente dónde ocurre cada evento</div></div>
+              <div class="icono-card"><div class="icono">📋</div><div class="nombre">Formularios</div><div class="desc">Llena reportes fáciles desde el campo</div></div>
+              <div class="icono-card"><div class="icono">🗺️</div><div class="nombre">Mapas</div><div class="desc">Ve tu posición en el mapa en tiempo real</div></div>
+              <div class="icono-card"><div class="icono">📡</div><div class="nombre">Sin internet</div><div class="desc">Funciona sin conexión y guarda los datos</div></div>
+            </div>
+            <div class="bloque exito">
+              <div class="bloque-titulo">✅ ¿Para qué usamos EarthRanger en Honduras?</div>
+              Para registrar actividades y eventos en las <strong>Áreas Protegidas y losSitios de Importancia para la Vida Silvestre Marinos y Terrestres</strong>, facilitando el trabajo del <strong>ICF</strong>.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Para qué sirve la aplicación EarthRanger Móvil?',
+            opciones: [
+              'Para llamar por teléfono a los compañeros',
+              'Para monitorear y registrar eventos en áreas protegidas',
+              'Para ver películas en el campo',
+              'Para enviar correos electrónicos'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! EarthRanger sirve para monitorear y registrar eventos en áreas protegidas de Honduras.'
+          }
+        },
+        {
+          titulo: 'Funciones principales',
+          contenido: `
+            <p style="margin-bottom:18px; font-size:1rem;">EarthRanger tiene <strong>4 funciones principales</strong> que vas a usar en el campo:</p>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>📍 Rastreo en tiempo real</strong>
+                  <span>Rastrea tu ubicación en el mapa mientras te desplazas por el área protegida.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>📋 Registro de eventos</strong>
+                  <span>Reporta lo que ves en el campo mediante formularios. Por ejemplo: caza ilegal, animales, construcciones, etc.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>🚶 Registro de patrullajes</strong>
+                  <span>Asocia tu recorrido con los eventos que registras. Guarda el inicio y fin de tu patrullaje.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>🔍 Rastreo de sujetos</strong>
+                  <span>Localiza collares de animales, vehículos o radios GPS desde la aplicación.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 Importante: Sin internet funciona igual</div>
+              Si no tienes conexión a internet en el campo, <strong>no hay problema</strong>. La aplicación guarda todos los datos en tu teléfono y los envía automáticamente cuando vuelvas a tener señal.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué pasa si no tienes internet en el campo cuando usas EarthRanger?',
+            opciones: [
+              'La aplicación se cierra y pierdes todo',
+              'No puedes usar la aplicación',
+              'Los datos se guardan en el teléfono y se envían cuando hay señal',
+              'Tienes que esperar hasta llegar al pueblo'
+            ],
+            correcta: 2,
+            explicacion: '¡Muy bien! EarthRanger guarda los datos en el teléfono aunque no haya internet, y los sincroniza después.'
+          }
+        }
+      ]
+    },
+    {
+      id: 2,
+      icono: '⬇️',
+      nombre: 'Instalación y Acceso',
+      descripcion: 'Descarga, instala e inicia sesión',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: 'Descargar la aplicación',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📲 ¿Cómo descargo EarthRanger?</div>
+              La aplicación es <strong>gratuita</strong> y se descarga desde la tienda oficial de tu teléfono.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Abre la tienda de aplicaciones de tu teléfono</strong>
+                  <span>👉 Si tienes Android: abre <strong>Play Store</strong> (ícono colorido de triángulo)<br>👉 Si tienes iPhone: abre <strong>App Store</strong> (ícono azul con "A")</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Busca "EarthRanger"</strong>
+                  <span>Escribe <strong>"EarthRanger"</strong> en la barra de búsqueda. Es una sola palabra.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Toca "Instalar" o "Obtener"</strong>
+                  <span>Espera a que termine de descargarse. Necesitas conexión a Wi-Fi o datos móviles para esto.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Abre la aplicación</strong>
+                  <span>Busca el ícono de EarthRanger en la pantalla de tu teléfono y tócalo para abrirlo.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque advertencia">
+              <div class="bloque-titulo">⚠️ Importante</div>
+              Necesitas conexión a <strong>Wi-Fi</strong> para descargar la aplicación. Hazlo antes de salir al campo.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Dónde descargas la aplicación EarthRanger si tu teléfono es Android?',
+            opciones: [
+              'En la página web de ICF',
+              'En Play Store',
+              'En App Store',
+              'No se puede descargar'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! En teléfonos Android, la descarga es desde Play Store.'
+          }
+        },
+        {
+          titulo: 'Iniciar sesión en la aplicación',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">🔐 ¿Cómo entro a la aplicación?</div>
+              Cada técnico tiene un <strong>usuario y contraseña</strong> propios. El facilitador te dará estos datos.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Abre EarthRanger en tu teléfono</strong>
+                  <span>Toca el ícono de la aplicación que ya descargaste.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Escribe el nombre de tu sitio</strong>
+                  <span>Ejemplo: <strong>rioplatano-sinaph</strong>, <strong>g.mosquitia</strong> o <strong>Olancho25</strong>. Este nombre te lo da el facilitador.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Escribe tu usuario y contraseña</strong>
+                  <span>Usa exactamente las letras que te dieron. Si te equivocas, borra y vuelve a escribir.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Toca "Iniciar Sesión"</strong>
+                  <span>Espera unos segundos. La aplicación va a sincronizar los datos del servidor.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 Permisos requeridos</div>
+              Cuando la aplicación pida permisos, di que <strong>SÍ</strong> a todo:
+              <ul>
+                <li>✅ Permiso de ubicación (GPS) – <strong>muy importante</strong></li>
+                <li>✅ Permiso de cámara (para fotos)</li>
+                <li>✅ Permiso de acceder a actividad física para rastreo de ubicación</li>
+              </ul>
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuál permiso es MÁS importante que debes aceptar al instalar EarthRanger?',
+            opciones: [
+              'Permiso para hacer llamadas',
+              'Permiso de ubicación (GPS)',
+              'Permiso para enviar mensajes',
+              'Permiso para conectarse a Bluetooth'
+            ],
+            correcta: 1,
+            explicacion: '¡Excelente! El permiso de ubicación (GPS) es el más importante porque EarthRanger necesita saber dónde estás.'
+          }
+        }
+      ]
+    },
+    {
+      id: 3,
+      icono: '🗺️',
+      nombre: 'Navegación en la App',
+      descripcion: 'Conoce todos los íconos y menús',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: 'Los íconos principales',
+          contenido: `
+            <p style="margin-bottom:14px;">Cuando abres EarthRanger, verás varios <strong>íconos en la pantalla</strong>. Vamos a conocerlos uno por uno:</p>
+            <div class="iconos-grid">
+              <div class="icono-card"><div class="icono">🗺️</div><div class="nombre">Mapa</div><div class="desc">Ver el mapa con tu ubicación actual</div></div>
+              <div class="icono-card"><div class="icono">📋</div><div class="nombre">Eventos</div><div class="desc">Ver y crear reportes de lo que observas</div></div>
+              <div class="icono-card"><div class="icono">🚶</div><div class="nombre">Patrullas</div><div class="desc">Iniciar y ver tus patrullajes</div></div>
+              <div class="icono-card"><div class="icono">👤</div><div class="nombre">Sujetos</div><div class="desc">Ver animales u objetos rastreados</div></div>
+              <div class="icono-card"><div class="icono">⚙️</div><div class="nombre">Ajustes</div><div class="desc">Configurar la aplicación</div></div>
+              <div class="icono-card"><div class="icono">📡</div><div class="nombre">Sincronizar</div><div class="desc">Enviar datos al servidor</div></div>
+            </div>
+            <div class="bloque exito">
+              <div class="bloque-titulo">✅ Consejo</div>
+              Si algo no funciona, primero revisa los <strong>Ajustes</strong> de la aplicación. Puedes resolver muchos problemas desde ahí sin llamar al técnico.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Para qué sirve el ícono de "Ajustes" (⚙️) en EarthRanger?',
+            opciones: [
+              'Para borrar todos los datos',
+              'Para configurar la aplicación y resolver problemas locales',
+              'Para cerrar la aplicación',
+              'Para llamar al técnico'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! Los Ajustes te permiten configurar la app y resolver problemas sin necesitar ayuda externa.'
+          }
+        },
+        {
+          titulo: 'El mapa y tu ubicación',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📍 ¿Cómo funciona el mapa?</div>
+              El mapa muestra tu posición exacta en tiempo real usando el GPS de tu teléfono.
+            </div>
+            <div class="bloque tip">
+              <div class="bloque-titulo">📡 Rastreo en línea y sin conexión</div>
+              La aplicación sincroniza los puntos de rastreo con EarthRanger de manera continua. Si no hay conexión a Internet, los datos se almacenan en el dispositivo hasta que se restablezca la conexión.
+            </div>
+            <div class="bloque exito">
+              <div class="bloque-titulo">🧭 Rastreo de sujetos</div>
+              Encuentra la ubicación de collares de animales, vehículos y radios en campo. Toca un sujeto para ver dónde ha estado y usa la opción <strong>"Ir a"</strong> para navegar directamente hacia su ubicación.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Tu posición = punto azul en el mapa</strong>
+                  <span>Verás un punto que se mueve cuando tú te mueves. Ese eres tú.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Los eventos = íconos de colores en el mapa</strong>
+                  <span>Cada evento registrado aparece en el mapa con un ícono. Tócalo para ver los detalles.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Rastreo en tiempo real</strong>
+                  <span><strong>Desliza hacia arriba</strong> el panel inferior del mapa para activar el rastreo de tu recorrido.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Ver sujetos en el mapa</strong>
+                  <span>Si hay animales con collar GPS, los verás en el mapa. Toca el ícono del animal para ver hacia dónde se dirige.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 Ir a una ubicación</div>
+              Si ves un sujeto o evento en el mapa, usa la opción <strong>"Ir a"</strong> para que la aplicación te guíe hacia esa ubicación.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué debes hacer para activar el seguimiento en tiempo real de tu recorrido en el mapa?',
+            opciones: [
+              'Sacudir el teléfono tres veces',
+              'Deslizar hacia arriba el panel inferior del mapa',
+              'Apagar y encender el GPS',
+              'Llamar al jefe de área'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! Deslizando hacia arriba el panel del mapa activas el rastreo de tu posición.'
+          }
+        }
+      ]
+    },
+    {
+      id: 4,
+      icono: '🚶',
+      nombre: 'Registro de Patrullajes',
+      descripcion: 'Cómo iniciar, llenar y finalizar un patrullaje',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: '¿Qué es un patrullaje?',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">🚶 Definición de Patrullaje</div>
+              Un patrullaje es el <strong>recorrido que haces por el área protegida o sitio de importancia para la vida silvestre</strong> para monitorear y registrar eventos. EarthRanger guarda todo: dónde fuiste, cuánto tiempo tardaste y qué observaste.
+            </div>
+            <table class="tabla-info">
+              <tr><th>Tipo de Patrullaje</th><th>Descripción</th></tr>
+              <tr><td>🚶 Patrullaje de Rutina</td><td>Recorrido a pie</td></tr>
+              <tr><td>⛵ Patrullaje en Embarcación</td><td>Recorrido en lancha por ríos, lagunas o mar</td></tr>
+              <tr><td>🔭 Patrullaje en Moto</td><td>Recorridos en motocicleta realizados por áreas protegidas o SIPVS</td></tr>
+            </table>
+            <div class="bloque exito">
+              <div class="bloque-titulo">📊 ¿Qué registra un patrullaje?</div>
+              <ul>
+                <li>📍 Tu ubicación GPS en todo momento</li>
+                <li>🕐 Hora de inicio y hora de finalización</li>
+                <li>📏 Distancia recorrida</li>
+                <li>⏱️ Tiempo total del recorrido</li>
+                <li>📋 Todos los eventos registrados durante el recorrido</li>
+              </ul>
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuáles datos registra automáticamente EarthRanger durante un patrullaje?',
+            opciones: [
+              'Solo la hora de inicio',
+              'Solo los eventos que registras tú',
+              'Ubicación GPS, hora de inicio y fin, distancia y duración',
+              'Solo la distancia recorrida'
+            ],
+            correcta: 2,
+            explicacion: '¡Perfecto! EarthRanger registra automáticamente la ubicación GPS, tiempo, distancia y todos los eventos del patrullaje.'
+          }
+        },
+        {
+          titulo: 'Paso a paso: Iniciar un patrullaje',
+          contenido: `
+            <div class="bloque advertencia">
+              <div class="bloque-titulo">⚠️ Antes de salir al campo</div>
+              Asegúrate de tener el GPS activado en tu teléfono y haber iniciado sesión en EarthRanger.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Abre EarthRanger y ve al Mapa</strong>
+                  <span>Toca el ícono del mapa en la parte inferior de la pantalla.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Busca la opción "Patrullaje"</strong>
+                  <span>En la pantalla del mapa, verás un botón o menú para iniciar un patrullaje. También puede estar en el menú principal.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Selecciona el tipo de patrullaje</strong>
+                  <span>Elige si tu patrullaje es <strong>Terrestre</strong> o <strong>Acuático</strong> (u otro tipo disponible en tu área).</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Toca "Iniciar Patrullaje"</strong>
+                  <span>La aplicación empezará a registrar tu recorrido automáticamente. Verás una línea en el mapa que muestra tu camino.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">5</div>
+                <div class="texto">
+                  <strong>Revisa la información general</strong>
+                  <span>En la parte superior verás la hora de inicio, distancia y tiempo transcurrido.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 ¿Cómo finalizo el patrullaje?</div>
+              Cuando termines tu recorrido, busca el botón <strong>"Finalizar Patrullaje"</strong> y confírmalo. EarthRanger guardará todo el recorrido.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuál es el orden correcto para iniciar un patrullaje en EarthRanger?',
+            opciones: [
+              'Registrar evento → Seleccionar tipo → Iniciar patrullaje',
+              'Abrir mapa → Buscar patrullaje → Seleccionar tipo → Iniciar patrullaje',
+              'Iniciar patrullaje → Abrir aplicación → Seleccionar tipo',
+              'Cerrar aplicación → Abrir GPS → Registrar'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! El orden es: Abrir mapa → Buscar "Patrullaje" → Seleccionar tipo → Tocar "Iniciar".'
+          }
+        },
+        {
+          titulo: 'Llenar el formulario de patrullaje',
+          contenido: `
+            <p style="margin-bottom:16px;">Al iniciar un patrullaje, debes <strong>completar algunos datos básicos</strong>. Aquí te mostramos cómo se ve el formulario:</p>
+            <div class="formulario-sim">
+              <h4>📋 Formulario de Patrullaje</h4>
+              <div class="campo-sim">
+                <label>Tipo de patrullaje <span class="req">*</span></label>
+                <select><option>Terrestre</option><option>Acuático / Marina</option><option>Punto fijo</option></select>
+                <div class="campo-nota">👆 Selecciona el tipo de recorrido que vas a hacer</div>
+              </div>
+              <div class="campo-sim">
+                <label>Nombre del responsable <span class="req">*</span></label>
+                <input type="text" placeholder="Ej: Juan García">
+                <div class="campo-nota">👆 Tu nombre completo</div>
+              </div>
+              <div class="campo-sim">
+                <label>Área protegida / SIPVSM <span class="req">*</span></label>
+                <input type="text" placeholder="Ej: Reserva del Río Plátano">
+              </div>
+              <div class="campo-sim">
+                <label>Número de personas en el equipo</label>
+                <input type="number" placeholder="Ej: 3">
+              </div>
+              <div class="campo-sim">
+                <label>Observaciones iniciales</label>
+                <textarea placeholder="Escribe aquí cualquier nota importante antes de iniciar..."></textarea>
+              </div>
+            </div>
+            <div class="bloque advertencia">
+              <div class="bloque-titulo">⚠️ Campos obligatorios</div>
+              Los campos marcados con <strong>*</strong> son obligatorios. No podrás iniciar el patrullaje sin llenarlos.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué significa el asterisco (*) al lado del nombre de un campo en el formulario?',
+            opciones: [
+              'Que ese campo es opcional',
+              'Que ese campo es obligatorio y debes llenarlo',
+              'Que hay un error en el formulario',
+              'Que el campo tiene información especial'
+            ],
+            correcta: 1,
+            explicacion: '¡Muy bien! El asterisco (*) indica que ese campo es obligatorio. Debes llenarlo para continuar.'
+          }
+        }
+      ]
+    },
+    {
+      id: 5,
+      icono: '📋',
+      nombre: 'Registro de Eventos',
+      descripcion: 'Cómo reportar amenazas, fauna y actividades',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: '¿Qué es un evento?',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📋 Definición de Evento</div>
+              Un <strong>evento</strong> es cualquier cosa importante que observas durante tu patrullaje: una especie de animal, una amenaza al bosque, una actividad sospechosa, etc. Cada evento tiene su propio <strong>formulario</strong> para llenar.
+            </div>
+            <p style="margin-bottom:14px; font-weight:700;">Los eventos están organizados en 3 categorías principales:</p>
+            <div class="iconos-grid">
+              <div class="icono-card" style="background:#fff3e0; border:2px solid #ff9800;">
+                <div class="icono">⚠️</div>
+                <div class="nombre">Monitoreo de Amenazas</div>
+                <div class="desc">Actividades que dañan el área protegida</div>
+              </div>
+              <div class="icono-card" style="background:#e8f5e9; border:2px solid #4caf50;">
+                <div class="icono">🦜</div>
+                <div class="nombre">Monitoreo Biológico</div>
+                <div class="desc">Fauna, flora y ecosistemas</div>
+              </div>
+              <div class="icono-card" style="background:#e3f2fd; border:2px solid #2196f3;">
+                <div class="icono">📊</div>
+                <div class="nombre">Monitoreo de Actividades</div>
+                <div class="desc">Actividades humanas en el área</div>
+              </div>
+            </div>
+            <table class="tabla-info">
+              <tr><th>Categoría</th><th>Tipos de eventos incluidos</th></tr>
+              <tr><td>⚠️ Amenazas</td><td>Desbosques, Cacería, Ganadería, Cultivos, Caminos, Construcciones</td></tr>
+              <tr><td>🦜 Biológico</td><td>Avistamiento de fauna, flora, rastros, nidos</td></tr>
+              <tr><td>📊 Actividades</td><td>Pesca artesanal, turismo, actividades comunitarias</td></tr>
+            </table>
+          `,
+          quiz: {
+            pregunta: 'Si encuentras evidencia de cacería ilegal en el campo, ¿en qué categoría registras este evento?',
+            opciones: [
+              'Monitoreo Biológico',
+              'Monitoreo de Actividades',
+              'Monitoreo de Amenazas',
+              'Registro de Patrullaje'
+            ],
+            correcta: 2,
+            explicacion: '¡Excelente! La cacería ilegal es una Amenaza, por lo que se registra en "Monitoreo de Amenazas".'
+          }
+        },
+        {
+          titulo: 'Paso a paso: Registrar un evento',
+          contenido: `
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Toca el botón "+" o "Nuevo Evento"</strong>
+                  <span>Normalmente aparece en la pantalla del mapa como un botón grande. También puede estar en el menú de Eventos.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Selecciona la categoría</strong>
+                  <span>Elige entre: Monitoreo de Amenazas, Monitoreo Biológico o Monitoreo de Actividades.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Busca y selecciona el formulario específico</strong>
+                  <span>Dentro de la categoría, busca el tipo exacto de evento. Por ejemplo: "Cacería" dentro de Amenazas.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Completa todos los campos del formulario</strong>
+                  <span>Llena la información que pide: fecha, descripción, cantidad, etc. Los campos con * son obligatorios.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">5</div>
+                <div class="texto">
+                  <strong>Agrega fotografías</strong>
+                  <span>Toma fotos de la evidencia. Las fotos son muy importantes. (Ver próxima lección para cómo tomar buenas fotos.)</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">6</div>
+                <div class="texto">
+                  <strong>Toca "Enviar" o "Guardar"</strong>
+                  <span>El evento queda guardado con tu ubicación GPS automáticamente.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 El GPS se guarda solo</div>
+              No tienes que escribir las coordenadas. EarthRanger las registra automáticamente cuando guardas el evento.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué hace EarthRanger automáticamente cuando guardas un evento?',
+            opciones: [
+              'Llama al supervisor',
+              'Registra las coordenadas GPS de tu ubicación',
+              'Envía un correo electrónico',
+              'Imprime el formulario'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! EarthRanger guarda automáticamente las coordenadas GPS del lugar donde registraste el evento.'
+          }
+        },
+        {
+          titulo: 'Cómo llenar un formulario de evento',
+          contenido: `
+            <p style="margin-bottom:14px;">Aquí tienes un ejemplo de cómo se ve el formulario para registrar un evento de <strong>Cacería</strong>:</p>
+            <div class="formulario-sim">
+              <h4>⚠️ Formulario: Cacería Ilegal</h4>
+              <div class="campo-sim">
+                <label>Tipo de evidencia <span class="req">*</span></label>
+                <select>
+                  <option>Trampa activa</option>
+                  <option>Trampa inactiva</option>
+                  <option>Animal muerto</option>
+                  <option>Casquillo de bala</option>
+                  <option>Persona cazando</option>
+                </select>
+              </div>
+              <div class="campo-sim">
+                <label>Especie afectada</label>
+                <input type="text" placeholder="Ej: Venado, Pizote, Loro...">
+              </div>
+              <div class="campo-sim">
+                <label>Cantidad <span class="req">*</span></label>
+                <input type="number" placeholder="Ej: 1">
+              </div>
+              <div class="campo-sim">
+                <label>Estado de la evidencia <span class="req">*</span></label>
+                <select>
+                  <option>Reciente (menos de 24 horas)</option>
+                  <option>Vieja (más de 24 horas)</option>
+                </select>
+              </div>
+              <div class="campo-sim">
+                <label>Descripción adicional</label>
+                <textarea placeholder="Describe con detalle lo que observaste..."></textarea>
+              </div>
+              <div class="campo-sim">
+                <label>Fotografías <span class="req">*</span></label>
+                <div style="background:#f0f0f0; border-radius:10px; padding:14px; text-align:center; color:#888; font-size:0.9rem;">
+                  📷 Toca aquí para agregar fotos
+                </div>
+                <div class="campo-nota">👆 Agrega al menos 1 fotografía de la evidencia</div>
+              </div>
+            </div>
+          `,
+          quiz: {
+            pregunta: 'Si encuentras una trampa para animales, ¿cuál evidencia fotográfica es más importante registrar?',
+            opciones: [
+              'Una foto del cielo',
+              'Una selfie tuya',
+              'Una foto clara de la trampa mostrando su ubicación y estado',
+              'Una foto de los árboles cercanos'
+            ],
+            correcta: 2,
+            explicacion: '¡Correcto! Lo más importante es una foto clara de la trampa, mostrando bien su estado y contexto del lugar.'
+          }
+        }
+      ]
+    },
+    {
+      id: 6,
+      icono: '📷',
+      nombre: 'Cómo Tomar Buenas Fotos',
+      descripcion: 'Guía práctica para fotografías de campo',
+      tipo: 'movil',
+      pasos: [
+        {
+          titulo: 'Por qué son importantes las fotos',
+          contenido: `
+            <div class="bloque advertencia">
+              <div class="bloque-titulo">⚠️ Las fotos son evidencia oficial</div>
+              Las fotografías que tomas en campo son la <strong>prueba</strong> de lo que encontraste. Pueden ser usadas en informes oficiales y reportes para las autoridades.
+            </div>
+            <p style="margin-bottom:16px; font-weight:700;">¿Qué debe mostrar una buena foto de campo?</p>
+            <div class="iconos-grid">
+              <div class="icono-card"><div class="icono">🔍</div><div class="nombre">Nitidez</div><div class="desc">La foto debe ser clara, sin movimiento borroso</div></div>
+              <div class="icono-card"><div class="icono">📐</div><div class="nombre">Contexto</div><div class="desc">Muestra el entorno alrededor de la evidencia</div></div>
+              <div class="icono-card"><div class="icono">🔆</div><div class="nombre">Buena luz</div><div class="desc">Evita fotos muy oscuras o con sol directo al lente</div></div>
+              <div class="icono-card"><div class="icono">📏</div><div class="nombre">Escala</div><div class="desc">Pon un objeto conocido (moneda, mano) junto a la evidencia</div></div>
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Para qué sirve poner tu mano o una moneda junto a la evidencia en las fotos?',
+            opciones: [
+              'Para decorar la foto',
+              'Para dar escala y que se vea el tamaño real del objeto',
+              'Porque lo pide la aplicación',
+              'Para que salga tu cara en la foto'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! Poner un objeto conocido junto a la evidencia ayuda a que cualquiera que vea la foto entienda el tamaño real.'
+          }
+        },
+        {
+          titulo: 'Guía de ángulos fotográficos',
+          contenido: `
+            <p style="margin-bottom:16px;">Para cada evento, se recomiendan <strong>mínimo 3 tipos de fotos</strong>:</p>
+            <div class="foto-guia">
+              <div class="icono-grande">🌐</div>
+              <div class="descripcion">
+                <h4>1️⃣ Foto panorámica (de lejos)</h4>
+                <p>Desde 5-10 metros de distancia. Muestra el lugar completo donde encontraste la evidencia. Incluye árboles, caminos o referencias del entorno.</p>
+              </div>
+            </div>
+            <div class="foto-guia">
+              <div class="icono-grande">🔎</div>
+              <div class="descripcion">
+                <h4>2️⃣ Foto de acercamiento (de cerca)</h4>
+                <p>Desde 1-2 metros. Muestra claramente la evidencia. Asegúrate de que esté enfocada y bien iluminada.</p>
+              </div>
+            </div>
+            <div class="foto-guia">
+              <div class="icono-grande">📏</div>
+              <div class="descripcion">
+                <h4>3️⃣ Foto con escala</h4>
+                <p>Coloca tu mano, un lápiz o una moneda junto a la evidencia y toma la foto. Esto muestra el tamaño real del objeto.</p>
+              </div>
+            </div>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 Para animales vivos o fauna</div>
+              <ul>
+                <li>📸 Foto del animal completo</li>
+                <li>📸 Foto del hábitat donde lo encontraste</li>
+                <li>📸 Foto de detalles (colores, tamaño si es posible)</li>
+                <li>🔇 Mantén silencio y distancia para no asustar al animal</li>
+              </ul>
+            </div>
+            <div class="bloque advertencia">
+              <div class="bloque-titulo">⚠️ Malas prácticas fotográficas</div>
+              <ul>
+                <li>❌ Fotos borrosas por movimiento del teléfono</li>
+                <li>❌ Fotos muy oscuras (sin luz suficiente)</li>
+                <li>❌ Fotos donde no se ve claramente la evidencia</li>
+                <li>❌ Fotos del suelo o del cielo sin contexto</li>
+              </ul>
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuántos tipos de fotos se recomiendan como MÍNIMO para documentar un evento?',
+            opciones: [
+              'Solo 1 foto es suficiente',
+              '2 fotos',
+              '3 tipos: panorámica, acercamiento y con escala',
+              '10 fotos de diferentes ángulos'
+            ],
+            correcta: 2,
+            explicacion: '¡Perfecto! Se recomiendan al menos 3 tipos: panorámica, acercamiento y con un objeto de escala.'
+          }
+        }
+      ]
+    },
+    {
+      id: 7,
+      icono: '🖥️',
+      nombre: 'EarthRanger Web',
+      descripcion: 'Cómo usar la plataforma desde la computadora',
+      tipo: 'web',
+      pasos: [
+        {
+          titulo: '¿Qué es EarthRanger Web?',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">🖥️ EarthRanger Web</div>
+              EarthRanger Web es una <strong>plataforma en internet</strong> que te permite ver todos los datos registrados desde el campo. Se usa en la computadora con el navegador <strong>Google Chrome</strong>.
+            </div>
+            <div class="iconos-grid">
+              <div class="icono-card"><div class="icono">🗺️</div><div class="nombre">Mapa interactivo</div><div class="desc">Ve todos los eventos y patrullajes en el mapa</div></div>
+              <div class="icono-card"><div class="icono">📊</div><div class="nombre">Estadísticas</div><div class="desc">Analiza los datos recopilados</div></div>
+              <div class="icono-card"><div class="icono">👥</div><div class="nombre">Equipos</div><div class="desc">Ve dónde están los técnicos en tiempo real</div></div>
+              <div class="icono-card"><div class="icono">📄</div><div class="nombre">Reportes</div><div class="desc">Genera informes automáticos con ECOSCOPE</div></div>
+            </div>
+            <div class="bloque tip">
+              <div class="bloque-titulo">💡 ¿Cómo accedo?</div>
+              Abre <strong>Google Chrome</strong> en la computadora y escribe la dirección de tu sitio. Ejemplo: <br>
+              <code style="background:#e8f5e9; padding:6px 12px; border-radius:8px; font-family:monospace; font-size:0.9rem;">occidente-sinaph.pamdas.org</code>
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué navegador debes usar para acceder a EarthRanger Web?',
+            opciones: [
+              'Safari',
+              'Internet Explorer',
+              'Google Chrome',
+              'Cualquiera funciona igual'
+            ],
+            correcta: 2,
+            explicacion: '¡Correcto! Se recomienda usar Google Chrome para asegurar que los mapas y datos carguen correctamente.'
+          }
+        },
+        {
+          titulo: 'La pantalla principal (Dashboard)',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">🖥️ ¿Qué veo cuando entro?</div>
+              Al abrir EarthRanger Web, verás un <strong>mapa grande</strong> con todos los eventos e íconos de los técnicos de campo.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Barra superior de navegación</strong>
+                  <span>En la parte de arriba verás el nombre de tu sitio, el estado del sistema y los menús principales.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Indicador de "Salud del Sistema"</strong>
+                  <span>🟢 Verde = todo funciona bien. 🔴 Rojo = los datos pueden estar desactualizados. Si está rojo, avisa al administrador.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Mapa central</strong>
+                  <span>Muestra todos los eventos activos. Los íconos tienen colores según la prioridad: 🔴 Rojo = urgente, 🟡 Amarillo = importante, 🟢 Verde = rutina.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Panel lateral</strong>
+                  <span>Muestra la lista de eventos recientes. Puedes filtrar por fecha, tipo o área.</span>
+                </div>
+              </li>
+            </ul>
+          `,
+          quiz: {
+            pregunta: 'En EarthRanger Web, si el indicador de sistema cambia a color ROJO, ¿qué significa?',
+            opciones: [
+              'Que todo funciona perfectamente',
+              'Que la información puede estar desactualizada y no es confiable para respuesta inmediata',
+              'Que debes reiniciar la computadora',
+              'Que hay una emergencia de incendio'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! El indicador rojo significa que los datos del mapa pueden ser "viejos" y no debes usarlos para decisiones urgentes.'
+          }
+        },
+        {
+          titulo: 'Ver eventos y patrullajes en la web',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📋 Eventos en la plataforma web</div>
+              Cada evento registrado desde el teléfono aparece en la web con toda la información, incluyendo las fotos.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Haz clic en un evento en el mapa</strong>
+                  <span>Aparecerá un panel con toda la información: tipo, fecha, hora, descripción y fotos.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Los colores de los íconos indican prioridad</strong>
+                  <span>🔴 Rojo = urgente (cacería activa, incendio) | 🟡 Amarillo = importante | 🟢 Verde = rutina</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>Ver los recorridos (tracks) de patrullaje</strong>
+                  <span>En el mapa verás líneas con flechas que muestran el recorrido de cada técnico. La flecha indica la dirección de movimiento.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Ver los sujetos (fauna con GPS)</strong>
+                  <span>Si hay animales con collar GPS o vehículos rastreados, los verás en el mapa con su trayectoria.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque exito">
+              <div class="bloque-titulo">✅ Ventaja de la plataforma web</div>
+              Los supervisores y coordinadores pueden ver <strong>en tiempo real</strong> dónde están los técnicos, qué eventos han registrado y analizar toda la información sin estar en el campo.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Qué color de ícono indica que un evento es URGENTE en EarthRanger Web?',
+            opciones: [
+              'Verde',
+              'Azul',
+              'Amarillo',
+              'Rojo'
+            ],
+            correcta: 3,
+            explicacion: '¡Perfecto! El color rojo indica que el evento es urgente (por ejemplo, cacería activa o un incendio).'
+          }
+        },
+        {
+          titulo: 'Generar reportes con ECOSCOPE',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📄 ¿Qué es ECOSCOPE?</div>
+              ECOSCOPE es una herramienta conectada a EarthRanger que <strong>genera informes automáticos</strong> en formato Word o PDF con todos los datos que los técnicos registraron desde el campo.
+            </div>
+            <ul class="pasos-lista">
+              <li>
+                <div class="n">1</div>
+                <div class="texto">
+                  <strong>Los técnicos registran datos desde el campo</strong>
+                  <span>Con EarthRanger Móvil: patrullajes, eventos, fotos, coordenadas GPS.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">2</div>
+                <div class="texto">
+                  <strong>Los datos llegan al servidor de EarthRanger</strong>
+                  <span>Cuando hay internet, los datos se sincronizan automáticamente.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">3</div>
+                <div class="texto">
+                  <strong>ECOSCOPE procesa los datos</strong>
+                  <span>El administrador entra a ECOSCOPE y selecciona la plantilla de reporte que necesita.</span>
+                </div>
+              </li>
+              <li>
+                <div class="n">4</div>
+                <div class="texto">
+                  <strong>Se genera el informe automáticamente</strong>
+                  <span>En minutos, se crea un informe completo listo para presentar a las autoridades del ICF.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="bloque exito">
+              <div class="bloque-titulo">✅ Beneficio principal</div>
+              Los técnicos de campo ya <strong>no necesitan escribir informes largos a mano</strong>. EarthRanger + ECOSCOPE lo hacen automáticamente con los datos que registraron.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuál es el principal beneficio de usar ECOSCOPE junto con EarthRanger?',
+            opciones: [
+              'Que los técnicos pueden ver películas en el campo',
+              'Que genera informes automáticos con los datos del campo, sin escribirlos a mano',
+              'Que funciona sin internet en cualquier lugar',
+              'Que reemplaza a los técnicos de campo'
+            ],
+            correcta: 1,
+            explicacion: '¡Excelente! ECOSCOPE genera los informes automáticamente con todos los datos registrados, ahorrando mucho tiempo.'
+          }
+        }
+      ]
+    },
+    {
+      id: 8,
+      icono: '🎯',
+      nombre: 'Práctica y Evaluación Final',
+      descripcion: 'Repaso general y ejercicios prácticos',
+      tipo: 'practica',
+      pasos: [
+        {
+          titulo: 'Resumen de lo aprendido',
+          contenido: `
+            <div class="bloque exito">
+              <div class="bloque-titulo">🎉 ¡Felicidades! Has completado el curso</div>
+              Repasemos todo lo que aprendiste en este campus:
+            </div>
+            <ul class="pasos-lista">
+              <li><div class="n">📱</div><div class="texto"><strong>EarthRanger Móvil</strong><span>Aplicación gratuita para monitorear áreas protegidas desde tu teléfono.</span></div></li>
+              <li><div class="n">⬇️</div><div class="texto"><strong>Instalación</strong><span>Se descarga en Play Store (Android) o App Store (iPhone). Necesitas usuario y contraseña.</span></div></li>
+              <li><div class="n">🗺️</div><div class="texto"><strong>Navegación</strong><span>El mapa muestra tu posición. Desliza hacia arriba para activar el rastreo.</span></div></li>
+              <li><div class="n">🚶</div><div class="texto"><strong>Patrullajes</strong><span>Selecciona tipo → Inicia → La app graba todo el recorrido automáticamente.</span></div></li>
+              <li><div class="n">📋</div><div class="texto"><strong>Eventos</strong><span>3 categorías: Amenazas, Biológico, Actividades. El GPS se graba solo.</span></div></li>
+              <li><div class="n">📷</div><div class="texto"><strong>Fotografías</strong><span>Mínimo 3 fotos: panorámica, acercamiento y con escala.</span></div></li>
+              <li><div class="n">🖥️</div><div class="texto"><strong>EarthRanger Web</strong><span>Plataforma en Google Chrome para ver todos los datos. ECOSCOPE genera informes automáticos.</span></div></li>
+            </ul>
+          `,
+          quiz: {
+            pregunta: 'Un técnico sale al campo pero no tiene internet. ¿Puede usar EarthRanger igual?',
+            opciones: [
+              'No, sin internet no funciona nada',
+              'Sí, guarda los datos y los sincroniza cuando haya señal',
+              'Solo puede ver el mapa pero no registrar eventos',
+              'Solo funciona con Wi-Fi, no con datos móviles'
+            ],
+            correcta: 1,
+            explicacion: '¡Correcto! EarthRanger funciona sin internet. Guarda todos los datos y los sincroniza automáticamente cuando vuelve la señal.'
+          }
+        },
+        {
+          titulo: 'Evaluación Final',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📝 Evaluación Final del Curso</div>
+              Responde las siguientes preguntas para completar tu certificación. Necesitas responder correctamente para avanzar.
+            </div>
+          `,
+          quiz: {
+            pregunta: '¿Cuál es el orden correcto para registrar un evento de pesca ilegal durante un patrullaje?',
+            opciones: [
+              'Tomar fotos → Llenar formulario → Finalizar patrullaje → Abrir EarthRanger',
+              'Abrir EarthRanger → Iniciar patrullaje → Observar → Crear nuevo evento → Seleccionar categoría → Llenar formulario → Agregar fotos → Guardar',
+              'Llamar al supervisor → Esperar instrucciones → Escribir en papel',
+              'Cerrar la aplicación → Llegar a la oficina → Reportar verbalmente'
+            ],
+            correcta: 1,
+            explicacion: '¡Perfecto! El flujo correcto es: EarthRanger abierto → Patrullaje iniciado → Al encontrar el evento → Nuevo evento → Categoría → Formulario → Fotos → Guardar.'
+          }
+        }
+      ]
+    },
+    {
+      id: 9,
+      icono: '📝',
+      nombre: 'Evaluación de Satisfacción',
+      descripcion: 'Tu opinión nos ayuda a mejorar el curso',
+      tipo: 'evaluacion',
+      pasos: [
+        {
+          titulo: 'Evaluación Final del Taller',
+          contenido: `
+            <div class="bloque info">
+              <div class="bloque-titulo">📋 Evaluación de Satisfacción</div>
+              <p>Por favor, evalúa tu experiencia en el taller. Tu opinión es muy importante para nosotros.</p>
+            </div>
+            
+            <form id="evaluationForm" class="evaluation-form">
+              <!-- Pregunta 1 -->
+              <div class="evaluation-question">
+                <label>1. ¿Le pareció importante todo lo que desarrollamos en el taller?</label>
+                <div class="rating-scale">
+                  <input type="radio" name="q1" value="1" id="q1_1"> <label for="q1_1">1 - No importante</label>
+                  <input type="radio" name="q1" value="2" id="q1_2"> <label for="q1_2">2</label>
+                  <input type="radio" name="q1" value="3" id="q1_3"> <label for="q1_3">3 - Neutral</label>
+                  <input type="radio" name="q1" value="4" id="q1_4"> <label for="q1_4">4</label>
+                  <input type="radio" name="q1" value="5" id="q1_5"> <label for="q1_5">5 - Muy importante</label>
+                </div>
+              </div>
+
+              <!-- Pregunta 2 -->
+              <div class="evaluation-question">
+                <label>2. ¿Le gustó la forma en la que desarrollamos el taller?</label>
+                <div class="rating-scale">
+                  <input type="radio" name="q2" value="1" id="q2_1"> <label for="q2_1">1 - No gustó</label>
+                  <input type="radio" name="q2" value="2" id="q2_2"> <label for="q2_2">2</label>
+                  <input type="radio" name="q2" value="3" id="q2_3"> <label for="q2_3">3 - Neutral</label>
+                  <input type="radio" name="q2" value="4" id="q2_4"> <label for="q2_4">4</label>
+                  <input type="radio" name="q2" value="5" id="q2_5"> <label for="q2_5">5 - Excelente</label>
+                </div>
+              </div>
+
+              <!-- Pregunta 3 -->
+              <div class="evaluation-question">
+                <label>3. ¿Los materiales le ayudaron a la comprensión y desarrollo del tema del taller?</label>
+                <div class="rating-scale">
+                  <input type="radio" name="q3" value="1" id="q3_1"> <label for="q3_1">1 - No ayudaron</label>
+                  <input type="radio" name="q3" value="2" id="q3_2"> <label for="q3_2">2</label>
+                  <input type="radio" name="q3" value="3" id="q3_3"> <label for="q3_3">3 - Algo ayudaron</label>
+                  <input type="radio" name="q3" value="4" id="q3_4"> <label for="q3_4">4</label>
+                  <input type="radio" name="q3" value="5" id="q3_5"> <label for="q3_5">5 - Muy útiles</label>
+                </div>
+              </div>
+
+              <!-- Pregunta 4 -->
+              <div class="evaluation-question">
+                <label>4. ¿La aplicación es lo suficientemente SIMPLE, así como su ejecución?</label>
+                <div class="rating-scale">
+                  <input type="radio" name="q4" value="1" id="q4_1"> <label for="q4_1">1 - Muy compleja</label>
+                  <input type="radio" name="q4" value="2" id="q4_2"> <label for="q4_2">2</label>
+                  <input type="radio" name="q4" value="3" id="q4_3"> <label for="q4_3">3 - Moderado</label>
+                  <input type="radio" name="q4" value="4" id="q4_4"> <label for="q4_4">4</label>
+                  <input type="radio" name="q4" value="5" id="q4_5"> <label for="q4_5">5 - Muy simple</label>
+                </div>
+              </div>
+
+              <!-- Pregunta 5 -->
+              <div class="evaluation-question">
+                <label>5. ¿Con esta herramienta es posible el monitoreo efectivo de las actividades y acciones en los Sitios de Importancia Para La Vida Silvestre Marina?</label>
+                <div class="rating-scale">
+                  <input type="radio" name="q5" value="1" id="q5_1"> <label for="q5_1">1 - Muy poco posible</label>
+                  <input type="radio" name="q5" value="2" id="q5_2"> <label for="q5_2">2</label>
+                  <input type="radio" name="q5" value="3" id="q5_3"> <label for="q5_3">3 - Moderadamente</label>
+                  <input type="radio" name="q5" value="4" id="q5_4"> <label for="q5_4">4</label>
+                  <input type="radio" name="q5" value="5" id="q5_5"> <label for="q5_5">5 - Muy posible</label>
+                </div>
+              </div>
+
+              <!-- Pregunta 6 - Abierta -->
+              <div class="evaluation-question">
+                <label>6. Escriba un comentario u observación acerca de la herramienta</label>
+                <textarea id="q6" name="q6" placeholder="Escribe tus comentarios aquí..." maxlength="500" rows="4"></textarea>
+                <small id="charCount">0/500</small>
+              </div>
+
+              <div class="evaluation-buttons">
+                <button type="button" class="eval-btn eval-btn-primary" onclick="enviarEvaluacion()">✅ Enviar Evaluación</button>
+              </div>
+              <p class="eval-status" id="evalStatus"></p>
+            </form>
+          `,
+          noNav: true
+        }
+      ]
+    }
+  ]
+};
+
+// Las variables globales están declaradas arriba con la configuración de Google Forms
+
+function initProgreso() {
+  curso.modulos.forEach(m => {
+    progreso[m.id] = {};
+    quizRespondido[m.id] = {};
+  });
+}
+
+function marcarPasoCompleto(modId, pasoIdx) {
+  progreso[modId][pasoIdx] = true;
+  actualizarProgreso();
+}
+
+function isPasoCompleto(modId, pasoIdx) {
+  return !!progreso[modId]?.[pasoIdx];
+}
+
+function isModuloCompleto(modId) {
+  const m = curso.modulos.find(x => x.id === modId);
+  if (!m || m.pasos.length === 0) return false;
+  return m.pasos.every((_, i) => isPasoCompleto(modId, i));
+}
+
+function isCursoCompleto() {
+  return curso.modulos.every(m => m.pasos.length === 0 ? true : m.pasos.every((_, i) => isPasoCompleto(m.id, i)));
+}
+
+function totalPasos() {
+  return curso.modulos.reduce((a, m) => a + m.pasos.length, 0);
+}
+
+function pasosCompletados() {
+  let c = 0;
+  curso.modulos.forEach(m => {
+    m.pasos.forEach((_, i) => { if (isPasoCompleto(m.id, i)) c++; });
+  });
+  return c;
+}
+
+function actualizarProgreso() {
+  const pct = totalPasos() > 0 ? Math.round((pasosCompletados() / totalPasos()) * 100) : 0;
+  document.getElementById('barraGlobal').style.width = pct + '%';
+  document.getElementById('pctGlobal').textContent = pct + '%';
+  renderSidebar();
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderSidebar() {
+  const cont = document.getElementById('menuModulos');
+  cont.innerHTML = '';
+  curso.modulos.forEach(m => {
+    const completado = isModuloCompleto(m.id);
+    const activo = m.id === moduloActual;
+    const div = document.createElement('div');
+    div.className = 'modulo-item' + (activo ? ' activo' : '') + (completado ? ' completado' : '');
+    div.onclick = () => irAModulo(m.id);
+    let badge = '';
+    if (m.tipo === 'movil') badge = '<span class="tag-tipo tag-movil">📱 Móvil</span>';
+    else if (m.tipo === 'web') badge = '<span class="tag-tipo tag-web">🖥️ Web</span>';
+    else if (m.tipo === 'simulador') badge = '<span class="tag-tipo" style="background:#fce4ec;color:#ad1457;">🎮 Simulador</span>';
+    else if (m.tipo === 'evaluacion') badge = '<span class="tag-tipo" style="background:#e8f5e9;color:#2e7d32;">📝 Evaluación</span>';
+    div.innerHTML = `
+      <div class="mod-icon">${m.icono}</div>
+      <div class="mod-info">
+        <div class="mod-nombre">${m.nombre}${badge}</div>
+        <div class="mod-lecciones">${m.pasos.length} lección${m.pasos.length !== 1 ? 'es' : ''}</div>
+      </div>
+      <div class="mod-check">${completado ? '✅' : (activo ? '▶️' : '')}</div>
+    `;
+    cont.appendChild(div);
+  });
+}
+
+function irAModulo(id, paso = 0) {
+  moduloActual = id;
+  pasoActual = paso;
+  renderMain();
+  renderSidebar();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderMain() {
+  const cont = document.getElementById('mainContent');
+  if (moduloActual === 0) {
+    renderInicio(cont);
+  } else {
+    renderLeccion(cont);
+  }
+}
+
+function renderInicio(cont) {
+  const totalC = pasosCompletados();
+  const total = totalPasos();
+  cont.innerHTML = `
+    <div class="pantalla-inicio">
+      <div class="bienvenida">
+        <h2>👋 Bienvenido al Campus EarthRanger</h2>
+        <p>EarthRanger Móvil es una aplicación gratuita diseñada para ayudar en el monitoreo de la vida silvestre y los ecosistemas.</p>
+        <div style="margin-top:16px; font-size:0.92rem; opacity:0.92;">Información basada en la presentación oficial de EarthRanger.</div>
+        <div class="stats">
+          <div class="stat-badge"><div><div class="num">${curso.modulos.length - 1}</div><div class="lbl">Módulos</div></div></div>
+          <div class="stat-badge"><div><div class="num">${total}</div><div class="lbl">Lecciones</div></div></div>
+          <div class="stat-badge"><div><div class="num">${totalC}</div><div class="lbl">Completadas</div></div></div>
+        </div>
+      </div>
+      <div style="background:white; border-radius:var(--radio); padding:24px; box-shadow:var(--sombra);">
+        <h3 style="font-family:'Baloo 2',cursive; color:var(--verde-oscuro); font-size:1.2rem; margin-bottom:6px;">📚 Elige un módulo para comenzar</h3>
+        <p style="font-size:0.88rem; color:#777; margin-bottom:16px;">Puedes hacer los módulos en orden o ir directo al tema que necesitas.</p>
+        <div class="modulos-grid">
+          ${curso.modulos.filter(m => m.id !== 0).map(m => `
+            <div class="modulo-card ${isModuloCompleto(m.id) ? 'completado-card' : ''}" onclick="irAModulo(${m.id})">
+              <div class="mc-icon">${m.icono}</div>
+              <div class="mc-badge">${m.pasos.length} lección${m.pasos.length !== 1 ? 'es' : ''}</div>
+              <h3>${m.nombre}</h3>
+              <p>${m.descripcion}</p>
+              ${m.tipo === 'movil' ? '<p style="margin-top:8px;"><span class="tag-tipo tag-movil">📱 App Móvil</span></p>' : ''}
+              ${m.tipo === 'web' ? '<p style="margin-top:8px;"><span class="tag-tipo tag-web">🖥️ Plataforma Web</span></p>' : ''}
+              ${m.tipo === 'practica' ? '<p style="margin-top:8px;"><span class="tag-tipo" style="background:#f3e5f5;color:#6a1b9a;">🎯 Práctica</span></p>' : ''}
+              ${m.tipo === 'simulador' ? '<p style="margin-top:8px;"><span class="tag-tipo" style="background:#fce4ec;color:#ad1457;">🎮 Simulador Interactivo</span></p>' : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderLeccion(cont) {
+  const modulo = curso.modulos.find(m => m.id === moduloActual);
+  if (!modulo) return;
+  const paso = modulo.pasos[pasoActual];
+  if (!paso) return;
+
+  const totalPasosM = modulo.pasos.length;
+  const barraW = Math.round(((pasoActual + (isPasoCompleto(moduloActual, pasoActual) ? 1 : 0)) / totalPasosM) * 100);
+
+  // Tabs de pasos
+  const tabs = modulo.pasos.map((p, i) => {
+    let cls = 'paso-btn';
+    if (i === pasoActual) cls += ' activo';
+    else if (isPasoCompleto(moduloActual, i)) cls += ' hecho';
+    return `<button class="${cls}" onclick="irAPaso(${i})">${i + 1}. ${p.titulo}</button>`;
+  }).join('');
+
+  // Quiz
+  let quizHtml = '';
+  if (paso.quiz) {
+    const qkey = `${moduloActual}_${pasoActual}`;
+    const respondido = !!quizRespondido[qkey];
+    const opciones = paso.quiz.opciones.map((op, i) => {
+      let cls = 'opcion-btn';
+      const letras = ['A', 'B', 'C', 'D'];
+      return `<button class="${cls}" onclick="responderQuiz(${i})" ${respondido ? 'disabled' : ''}>
+        <span class="letra">${letras[i]}</span> ${op}
+      </button>`;
+    }).join('');
+
+    quizHtml = `
+      <div class="sep"></div>
+      <div class="quiz-section">
+        <h3>🧠 Pregunta de práctica</h3>
+        <div class="pregunta">
+          <p>${paso.quiz.pregunta}</p>
+          <div class="opciones">${opciones}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const esPrimero = pasoActual === 0;
+  const esUltimo = pasoActual === totalPasosM - 1;
+  const pasoListo = isPasoCompleto(moduloActual, pasoActual);
+  const esSimulador = !!paso.simulador;
+
+  cont.innerHTML = `
+    <div class="leccion-panel">
+      <div class="leccion-header">
+        <div class="big-icon">${modulo.icono}</div>
+        <div>
+          <h2>${modulo.nombre}</h2>
+          <p>${modulo.descripcion}</p>
+        </div>
+      </div>
+      <div class="pasos-nav">${tabs}</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">
+          <div class="num-circulo">${pasoActual + 1}</div>
+          ${paso.titulo}
+        </div>
+        ${paso.contenido}
+        ${quizHtml}
+      </div>
+      <div class="nav-inferior">
+        <button class="btn-nav secundario" onclick="irAPaso(${pasoActual - 1})" ${esPrimero ? 'disabled' : ''}>← Anterior</button>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; max-width:200px;">
+          <div class="barra-progreso-leccion"><div class="barra-progreso-fill" style="width:${barraW}%"></div></div>
+          <span style="font-size:0.72rem; color:#999;">${pasoActual + 1} / ${totalPasosM}</span>
+        </div>
+        ${(!pasoListo && paso.quiz) ?
+          `<button class="btn-nav primario" disabled title="Responde la pregunta primero">Siguiente →</button>` :
+          (!pasoListo && esSimulador) ?
+          `<button class="btn-nav primario" disabled id="sim-next-blocked" title="Completa el simulador primero">🎮 Completa la práctica</button>` :
+          esUltimo ?
+            `<button class="btn-nav primario" onclick="completarModulo()">✅ Completar módulo</button>` :
+            `<button class="btn-nav primario" onclick="siguientePaso()">Siguiente →</button>`
+        }
+      </div>
+    </div>
+  `;
+  // Boot simulator if this step has one
+  if (paso.simulador) {
+    setTimeout(() => bootSimulator(paso.simulador), 60);
+  }
+  
+  // Initialize character counter for evaluation module
+  if (modulo.tipo === 'evaluacion') {
+    const textarea = document.getElementById('q6');
+    const charCount = document.getElementById('charCount');
+    if (textarea && charCount) {
+      textarea.addEventListener('input', function() {
+        charCount.textContent = this.value.length + '/500';
+      });
+    }
+  }
+}
+
+function irAPaso(i) {
+  const m = curso.modulos.find(x => x.id === moduloActual);
+  if (!m) return;
+  if (i < 0 || i >= m.pasos.length) return;
+  pasoActual = i;
+  renderMain();
+  document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function siguientePaso() {
+  marcarPasoCompleto(moduloActual, pasoActual);
+  irAPaso(pasoActual + 1);
+}
+
+function completarModulo() {
+  marcarPasoCompleto(moduloActual, pasoActual);
+  if (isCursoCompleto()) {
+    const score = mostrarNotaFinalCurso();
+    mostrarCertificado(score);
+  } else {
+    mostrarLogro(moduloActual);
+  }
+}
+
+function responderQuiz(opcionIdx) {
+  const qkey = `${moduloActual}_${pasoActual}`;
+  quizRespondido[qkey] = opcionIdx;
+  marcarPasoCompleto(moduloActual, pasoActual);
+  calcularScoreModulo(moduloActual);
+  renderMain();
+}
+
+function calcularScoreModulo(modId) {
+  const m = curso.modulos.find(x => x.id === modId);
+  if (!m) return 0;
+  
+  let correctas = 0;
+  let total = 0;
+  
+  m.pasos.forEach((paso, idx) => {
+    if (paso.quiz) {
+      total++;
+      const qkey = `${modId}_${idx}`;
+      if (quizRespondido[qkey] === paso.quiz.correcta) {
+        correctas++;
+      }
+    }
+  });
+  
+  if (total === 0) return 100;
+  const score = Math.round((correctas / total) * 100);
+  scoreModulos[modId] = score;
+  return score;
+}
+
+function mostrarLogro(modId) {
+  const m = curso.modulos.find(x => x.id === modId);
+  const iconos = ['🏆', '⭐', '🌟', '🎖️', '🦁', '🌿', '🎯', '🥇'];
+  const icono = iconos[modId % iconos.length];
+  
+  document.getElementById('logroIcono').textContent = icono;
+  document.getElementById('logroTitulo').textContent = '¡Módulo Completado!';
+  document.getElementById('logroDesc').textContent = `Has terminado el módulo "${m?.nombre}". ¡Sigue así!`;
+  document.getElementById('logroModal').classList.add('show');
+}
+
+function mostrarNotaFinalCurso() {
+  let totalCorrectas = 0;
+  let totalPreguntas = 0;
+  
+  curso.modulos.forEach(m => {
+    m.pasos.forEach((paso, idx) => {
+      if (paso.quiz) {
+        totalPreguntas++;
+        const qkey = `${m.id}_${idx}`;
+        if (quizRespondido[qkey] === paso.quiz.correcta) {
+          totalCorrectas++;
+        }
+      }
+    });
+  });
+  
+  const notaFinal = totalPreguntas === 0 ? 100 : Math.round((totalCorrectas / totalPreguntas) * 100);
+  document.getElementById('logroModal').classList.remove('show');
+  return notaFinal;
+}
+
+function cerrarLogro() {
+  document.getElementById('logroModal').classList.remove('show');
+  // Ir al siguiente módulo si existe
+  const nextId = moduloActual + 1;
+  if (nextId < curso.modulos.length && curso.modulos[nextId].pasos.length > 0) {
+    irAModulo(nextId);
+  } else {
+    mostrarCertificado(mostrarNotaFinalCurso());
+  }
+}
+
+// ============================================================
+// SIMULADOR INTERACTIVO DE TELÉFONO
+// ============================================================
+
+function phoneHTML(screenId, extraScreens = '') {
+  return `
+    <div class="sim-wrapper">
+      <div class="sim-phone-col">
+        <div class="phone-shell">
+          <div class="phone-notch">
+            <div class="cam"></div>
+            <div class="speaker"></div>
+            <div class="cam"></div>
+          </div>
+          <div class="phone-screen" id="phone-screen-${screenId}">
+            ${extraScreens}
+            <div class="phone-toast" id="toast-${screenId}"></div>
+          </div>
+          <div class="phone-home-bar"></div>
+        </div>
+      </div>
+      <div class="sim-guide-col">
+        <div class="sim-guide" id="guide-${screenId}">
+          <h3>📋 Guía paso a paso</h3>
+          <ul class="sim-step-list" id="steps-${screenId}"></ul>
+          <div class="sim-congrats" id="congrats-${screenId}">
+            <div class="big">🎉</div>
+            <p>¡Excelente! Completaste esta práctica correctamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showToast(id, msg, duration = 2200) {
+  const t = document.getElementById('toast-' + id);
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+function updateSteps(id, steps, currentIdx) {
+  const ul = document.getElementById('steps-' + id);
+  if (!ul) return;
+  ul.innerHTML = steps.map((s, i) => {
+    let cls = i < currentIdx ? 'done' : i === currentIdx ? 'current' : '';
+    return `<li class="${cls}">
+      <div class="ss-num">${i < currentIdx ? '✓' : i + 1}</div>
+      <div class="ss-text">${s}</div>
+    </li>`;
+  }).join('');
+}
+
+function showCongrats(id) {
+  const el = document.getElementById('congrats-' + id);
+  if (el) el.classList.add('show');
+}
+
+function unlockSimStep(modId, pasoIdx) {
+  marcarPasoCompleto(modId, pasoIdx);
+  // Re-render just the nav inferior without destroying the simulator
+  const modulo = curso.modulos.find(m => m.id === modId);
+  const esUltimo = pasoIdx === modulo.pasos.length - 1;
+  const navInf = document.querySelector('.nav-inferior');
+  if (navInf) {
+    const btnRight = navInf.querySelector('.btn-nav.primario');
+    if (btnRight) {
+      btnRight.removeAttribute('disabled');
+      if (esUltimo) {
+        btnRight.textContent = '✅ Completar módulo';
+        btnRight.onclick = () => completarModulo();
+      } else {
+        btnRight.textContent = 'Siguiente →';
+        btnRight.onclick = () => siguientePaso();
+      }
+    }
+  }
+  actualizarProgreso();
+}
+
+// ---- SIMULADOR 1: LOGIN ----
+function bootSimLogin() {
+  const wrap = document.getElementById('sim-login-wrap');
+  if (!wrap) return;
+  const SID = 'login';
+  const steps = [
+    'Escribe el nombre de tu sitio',
+    'Ingresa tu nombre de usuario',
+    'Ingresa tu contraseña',
+    'Toca el botón "Iniciar Sesión"'
+  ];
+  let stepIdx = 0;
+  let filled = { sitio: false, user: false, pass: false };
+
+  wrap.innerHTML = phoneHTML(SID, `
+    <div class="app-screen login-screen active" id="scr-login">
+      <div class="login-logo-area">
+        <div class="er-logo"><img src="campus_earthranger_assets/EarthRanger-Logo-2024_Ai2-H.png" alt="EarthRanger" style="max-width:100%; height:auto;"></div>
+        <h2>EARTHRANGER</h2>
+        <p>Inicia sesión para continuar</p>
+      </div>
+      <div class="login-form-area">
+        <div class="sim-field">
+          <label>🌐 Nombre del sitio <span class="req">*</span></label>
+          <input class="sim-input" id="sim-sitio" placeholder="franciscocorazan-sinaph.pamdas.org" oninput="simLoginInput('sitio')">
+        </div>
+        <div class="sim-field">
+          <label>👤 Nombre de usuario <span class="req">*</span></label>
+          <input class="sim-input" id="sim-user" placeholder="cpleites" oninput="simLoginInput('user')">
+        </div>
+        <div class="sim-field">
+          <label>🔒 Contraseña <span class="req">*</span></label>
+          <input class="sim-input" id="sim-pass" type="password" placeholder="••••••••" oninput="simLoginInput('pass')">
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px; font-size:10px; color:#555;">
+          <input type="checkbox" id="sim-remember" style="width:14px; height:14px;">
+          <label for="sim-remember" style="margin:0; cursor:pointer;">Recuérdame</label>
+        </div>
+        <button class="sim-btn primary" id="sim-login-btn" onclick="simDoLogin()" disabled>Iniciar sesión</button>
+        <p style="font-size:9px; color:#aaa; text-align:center; margin-top:10px;">EarthRanger Móvil · ICF Honduras</p>
+      </div>
+    </div>
+    <div class="app-screen login-screen" id="scr-sync">
+      <div class="login-logo-area" style="padding-top:32px;">
+        <div class="er-logo" style="background:rgba(255,255,255,0.12);"><img src="campus_earthranger_assets/EarthRanger-Logo-2024_Ai2-H.png" alt="EarthRanger" style="max-width:90%; height:auto;"></div>
+        <h2>EARTHRANGER</h2>
+        <p>Sincronizando cuentas de usuario</p>
+      </div>
+      <div class="login-form-area" style="background:rgba(255,255,255,0.15); box-shadow:none;">
+        <div style="background:url('campus_earthranger_assets/bg_area.jpg') center/cover no-repeat; border-radius:18px; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; padding:20px; color:white; position:relative; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.28);"></div>
+          <div style="position:relative; z-index:1;">
+            <p style="font-size:11px; opacity:0.9; margin-bottom:10px;">Sincronizando cuentas de usuario</p>
+            <div style="background:rgba(255,255,255,0.16); border-radius:12px; overflow:hidden; height:10px; margin-bottom:10px;">
+              <div style="width:50%; height:100%; background:#4dabf7;"></div>
+            </div>
+            <p style="font-size:10px; opacity:0.85; margin:0;">2 de 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-screen" id="scr-map-login">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="sb-right"><span>📶</span><span>🔋</span></div>
+      </div>
+      <div class="app-header">
+        <div class="logo-small">🌿</div>
+        <h3>EarthRanger · rioplatano-sinaph</h3>
+      </div>
+      <div class="fake-map" style="position:relative;">
+        <div style="position:absolute; top:14px; left:14px; background:rgba(255,255,255,0.92); padding:7px 12px; border-radius:18px; font-size:10px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.1);">Tracking / Patrol</div>
+        <div style="position:absolute; top:14px; right:14px; display:flex; gap:8px;">
+          <div style="background:rgba(255,255,255,0.92); border-radius:12px; padding:7px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">🗺️</div>
+          <div style="background:rgba(255,255,255,0.92); border-radius:12px; padding:7px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">🧭</div>
+        </div>
+        <div class="map-road" style="width:3px;height:100%;left:50%;top:0"></div>
+        <div class="map-road" style="width:100%;height:3px;left:0;top:50%"></div>
+        <div class="map-event-dot" style="background:#c62828;left:30%;top:35%">⚠️</div>
+        <div class="map-event-dot" style="background:#27ae60;left:65%;top:60%">🦜</div>
+        <div class="map-you"></div>
+        <div class="map-label">📍 Río Plátano · GPS activo</div>
+      </div>
+      <div class="app-body" style="padding:10px">
+        <div style="background:#e3f2fd;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #1565c0;margin-bottom:10px;">
+          👉 <strong>Toca el ícono de Patrullas</strong> en el menú de abajo para comenzar.
+        </div>
+      </div>
+      <div class="app-bottom-nav">
+        <div class="nav-item active"><div class="ni-icon">MAP</div>MAP</div>
+        <div class="nav-item"><div class="ni-icon">STAT</div>STATUS</div>
+        <div class="nav-item"><div class="ni-icon">EVT</div>EVENTS</div>
+        <div class="nav-item"><div class="ni-icon">SUB</div>SUBJECTS</div>
+        <div class="nav-item"><div class="ni-icon">SET</div>SETTINGS</div>
+      </div>
+    </div>
+  `);
+
+  updateSteps(SID, steps, 0);
+
+  window.simLoginInput = function(field) {
+    const val = document.getElementById('sim-' + field)?.value || '';
+    if (val.length > 0) {
+      document.getElementById('sim-' + field).classList.add('filled');
+      filled[field] = true;
+      if (field === 'sitio' && stepIdx === 0) { stepIdx = 1; updateSteps(SID, steps, 1); showToast(SID, '✅ Sitio ingresado'); }
+      if (field === 'user' && stepIdx === 1) { stepIdx = 2; updateSteps(SID, steps, 2); showToast(SID, '✅ Usuario ingresado'); }
+      if (field === 'pass' && stepIdx === 2) { stepIdx = 3; updateSteps(SID, steps, 3); showToast(SID, '✅ Contraseña ingresada'); }
+    } else {
+      document.getElementById('sim-' + field).classList.remove('filled');
+      filled[field] = false;
+    }
+    const btn = document.getElementById('sim-login-btn');
+    if (btn) btn.disabled = !(filled.sitio && filled.user && filled.pass);
+  };
+
+  window.simDoLogin = function() {
+    const sitio = document.getElementById('sim-sitio')?.value;
+    const user = document.getElementById('sim-user')?.value;
+    const pass = document.getElementById('sim-pass')?.value;
+    if (!sitio || !user || !pass) return;
+    showToast(SID, '🔄 Sincronizando datos...');
+    document.getElementById('scr-login').classList.remove('active');
+    document.getElementById('scr-sync').classList.add('active');
+    setTimeout(() => {
+      document.getElementById('scr-sync').classList.remove('active');
+      document.getElementById('scr-map-login').classList.add('active');
+      updateSteps(SID, steps, 4);
+      showCongrats(SID);
+      unlockSimStep(moduloActual, pasoActual);
+    }, 1400);
+  };
+}
+
+// ---- SIMULADOR 2: PATRULLAJE ----
+function bootSimPatrol() {
+  const wrap = document.getElementById('sim-patrol-wrap');
+  if (!wrap) return;
+  const SID = 'patrol';
+  const steps = [
+    'Ubicar la opción Patrullaje',
+    'Seleccionar tipo de Patrullaje',
+    'Iniciar Patrullaje',
+    'Ver la información general',
+    'Registrar eventos en ruta',
+    'Finalizar y guardar'
+  ];
+  let stepIdx = 0;
+
+  wrap.innerHTML = phoneHTML(SID, `
+    <!-- PANTALLA: MAPA -->
+    <div class="app-screen active" id="scr-p-map">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="logo-small">🌿</div><h3>EarthRanger · Mapa</h3></div>
+      <div class="fake-map" style="position:relative;">
+        <div style="position:absolute; top:14px; left:14px; background:rgba(255,255,255,0.94); padding:7px 12px; border-radius:18px; font-size:10px; font-weight:800; box-shadow:0 2px 10px rgba(0,0,0,0.12);">Tracking / Patrol</div>
+        <div style="position:absolute; top:14px; right:14px; display:flex; gap:8px;">
+          <div style="background:rgba(255,255,255,0.94); border-radius:12px; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.12);">🗺️</div>
+          <div style="background:rgba(255,255,255,0.94); border-radius:12px; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.12);">🧭</div>
+        </div>
+        <div class="map-road" style="width:3px;height:100%;left:50%;top:0"></div>
+        <div class="map-road" style="width:100%;height:3px;left:0;top:50%"></div>
+        <div class="map-you"></div>
+        <div class="map-label">📍 GPS activo · Sin patrullaje</div>
+      </div>
+      <div class="app-body" style="padding:10px">
+        <div style="background:#e3f2fd;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #1565c0;margin-bottom:10px;">
+          👉 <strong>Toca el ícono de Patrullas</strong> en el menú de abajo para comenzar.
+        </div>
+      </div>
+      <div class="app-bottom-nav">
+        <div class="nav-item active"><div class="ni-icon">MAP</div>MAP</div>
+        <div class="nav-item"><div class="ni-icon">STAT</div>STATUS</div>
+        <div class="nav-item"><div class="ni-icon">EVT</div>EVENTS</div>
+        <div class="nav-item"><div class="ni-icon">SUB</div>SUBJECTS</div>
+        <div class="nav-item"><div class="ni-icon">SET</div>SETTINGS</div>
+      </div>
+    </div>
+    <!-- PANTALLA: LISTA PATRULLAS -->
+    <div class="app-screen" id="scr-p-list">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simPatrolBack('scr-p-map','scr-p-list')">←</div><h3>Patrullas</h3></div>
+      <div class="app-body">
+        <div style="text-align:center;padding:20px 0 12px;">
+          <div style="font-size:36px;margin-bottom:8px">🚶</div>
+          <p style="font-size:11px;color:#888;margin-bottom:12px">No tienes patrullajes activos.</p>
+          <button class="sim-btn primary" style="width:auto;padding:10px 20px" onclick="simPatrolStep2()">+ Nueva Patrulla</button>
+        </div>
+        <div style="background:#e8f5e9;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #27ae60;margin-top:10px">
+          👉 <strong>Toca "+ Nueva Patrulla"</strong> para comenzar un nuevo recorrido
+        </div>
+      </div>
+    </div>
+    <!-- PANTALLA: TIPO DE PATRULLAJE -->
+    <div class="app-screen" id="scr-p-type">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simPatrolBack('scr-p-list','scr-p-type')">←</div><h3>Tipo de Patrullaje</h3></div>
+      <div class="app-body">
+        <p style="font-size:10px;color:#666;margin-bottom:10px">Selecciona el tipo de patrullaje:</p>
+        <div class="cat-grid">
+          <div class="cat-card" style="background:#e8f5e9" onclick="simPatrolSelectType('Patrullaje de Rutina')">
+            <div class="cat-icon">🚶</div>
+            <div class="cat-name">Patrullaje de Rutina</div>
+          </div>
+          <div class="cat-card" style="background:#e3f2fd" onclick="simPatrolSelectType('Patrullaje en Motocicleta')">
+            <div class="cat-icon">🏍️</div>
+            <div class="cat-name">Patrullaje en Motocicleta</div>
+          </div>
+          <div class="cat-card" style="background:#fff3e0" onclick="simPatrolSelectType('Patrullaje en Carro')">
+            <div class="cat-icon">🚗</div>
+            <div class="cat-name">Patrullaje en Carro</div>
+          </div>
+          <div class="cat-card" style="background:#f3e5f5" onclick="simPatrolSelectType('Patrullaje Mixto')">
+            <div class="cat-icon">🚴</div>
+            <div class="cat-name">Patrullaje Mixto</div>
+          </div>
+          <div class="cat-card" style="background:#fff3e0" onclick="simPatrolSelectType('Atención a Delitos Ambientales')">
+            <div class="cat-icon">⚖️</div>
+            <div class="cat-name">Atención a Delitos Ambientales</div>
+          </div>
+        </div>
+        <div style="background:#fff3e0;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #ff9800;margin-top:10px">
+          👉 <strong>Toca el tipo de patrullaje</strong> que vas a realizar
+        </div>
+      </div>
+    </div>
+    <!-- PANTALLA: FORMULARIO PATRULLAJE -->
+    <div class="app-screen" id="scr-p-form">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simPatrolBack('scr-p-type','scr-p-form')">←</div><h3>Patrullaje de Rutina</h3></div>
+      <div class="app-body">
+        <div style="background:white;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px rgba(0,0,0,0.08);font-size:11px;">
+          <div style="font-weight:700;color:#333;margin-bottom:6px">UBICACIÓN INICIAL</div>
+          <div style="font-size:12px;color:#555;">14.10270°, -87.22949°</div>
+          <div style="margin-top:10px;font-size:10px;color:#666;display:flex;justify-content:space-between;align-items:center;">
+            <span>Rastreado por</span><strong>cpleites</strong>
+          </div>
+        </div>
+        <div class="sim-field">
+          <label>Título de patrulla</label>
+          <input class="sim-input" id="sp-nombre" placeholder="Recorrido por el área protegida." oninput="simPatrolFormCheck()">
+        </div>
+        <button class="sim-btn primary" id="sp-start-btn" onclick="simPatrolStart()" disabled>Iniciar Patrulla</button>
+      </div>
+    </div>
+    <!-- PANTALLA: PATRULLAJE ACTIVO -->
+    <div class="app-screen" id="scr-p-active">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header" style="background:#c62828"><h3>🔴 Patrullaje Activo</h3></div>
+      <div class="fake-map" id="sp-map-active">
+        <div class="map-road" style="width:3px;height:100%;left:50%;top:0"></div>
+        <div class="map-road" style="width:100%;height:3px;left:0;top:50%"></div>
+        <div class="map-you" id="sp-you" style="left:50%;top:50%"></div>
+        <div class="map-label" id="sp-map-label">🔴 Grabando recorrido...</div>
+      </div>
+      <div class="app-body" style="padding:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+          <div style="background:white;border-radius:10px;padding:8px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.08)">
+            <div style="font-size:16px;font-weight:900;color:#1a7a4a" id="sp-dist">0 m</div>
+            <div style="font-size:8px;color:#999">Distancia</div>
+          </div>
+          <div style="background:white;border-radius:10px;padding:8px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.08)">
+            <div style="font-size:16px;font-weight:900;color:#1565c0" id="sp-time">00:00</div>
+            <div style="font-size:8px;color:#999">Tiempo</div>
+          </div>
+          <div style="background:white;border-radius:10px;padding:8px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.08)">
+            <div style="font-size:16px;font-weight:900;color:#e65100" id="sp-pts">0</div>
+            <div style="font-size:8px;color:#999">Puntos GPS</div>
+          </div>
+        </div>
+        <button class="sim-btn danger" onclick="simPatrolFinish()">⏹ Finalizar Patrullaje</button>
+        <div style="background:#e8f5e9;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #27ae60;margin-top:8px">
+          👉 Observa cómo se graba tu recorrido. Luego toca <strong>"Finalizar Patrullaje"</strong>
+        </div>
+      </div>
+    </div>
+    <!-- PANTALLA: RESUMEN -->
+    <div class="app-screen" id="scr-p-done">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><h3>✅ Patrullaje Completado</h3></div>
+      <div class="app-body">
+        <div style="text-align:center;padding:14px 0">
+          <div style="font-size:40px;margin-bottom:8px">🎯</div>
+          <p style="font-size:13px;font-weight:800;color:#1a7a4a;margin-bottom:4px">¡Patrullaje registrado!</p>
+          <p style="font-size:10px;color:#888">Los datos se enviaron a EarthRanger Web.</p>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px">
+          <p style="font-size:10px;font-weight:800;color:#333;margin-bottom:8px">📊 Resumen del patrullaje:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="font-size:9px;color:#666">⏱️ Duración: <strong>00:45</strong></div>
+            <div style="font-size:9px;color:#666">📏 Distancia: <strong>2.3 km</strong></div>
+            <div style="font-size:9px;color:#666">📍 Puntos GPS: <strong>47</strong></div>
+            <div style="font-size:9px;color:#666">📋 Eventos: <strong>2</strong></div>
+          </div>
+        </div>
+        <div class="sim-complete-banner"><span style="font-size:22px">✅</span><span>¡Patrullaje guardado con éxito!</span></div>
+      </div>
+    </div>
+  `);
+
+  updateSteps(SID, steps, 0);
+  let patrolType = '';
+  let patrolTimer = null;
+  let seconds = 0, meters = 0, gpsPoints = 0;
+
+  window.simPatrolBack = function(show, hide) {
+    document.getElementById(hide).classList.remove('active');
+    document.getElementById(show).classList.add('active');
+  };
+
+  window.simPatrolStep1 = function() {
+    stepIdx = 1; updateSteps(SID, steps, 1);
+    showToast(SID, '🚶 Abriendo Patrullas...');
+    setTimeout(() => {
+      document.getElementById('scr-p-map').classList.remove('active');
+      document.getElementById('scr-p-list').classList.add('active');
+    }, 400);
+  };
+
+  window.simPatrolStep2 = function() {
+    stepIdx = 2; updateSteps(SID, steps, 2);
+    document.getElementById('scr-p-list').classList.remove('active');
+    document.getElementById('scr-p-type').classList.add('active');
+  };
+
+  window.simPatrolSelectType = function(type) {
+    patrolType = type;
+    stepIdx = 3; updateSteps(SID, steps, 3);
+    showToast(SID, '✅ Tipo: ' + type);
+    setTimeout(() => {
+      document.getElementById('scr-p-type').classList.remove('active');
+      document.getElementById('scr-p-form').classList.add('active');
+    }, 500);
+  };
+
+  window.simPatrolFormCheck = function() {
+    const nombre = document.getElementById('sp-nombre')?.value;
+    const area = document.getElementById('sp-area')?.value;
+    const btn = document.getElementById('sp-start-btn');
+    if (btn) btn.disabled = !(nombre && area);
+    if (nombre && area && stepIdx === 3) { stepIdx = 4; updateSteps(SID, steps, 4); }
+  };
+
+  window.simPatrolStart = function() {
+    stepIdx = 5; updateSteps(SID, steps, 5);
+    document.getElementById('scr-p-form').classList.remove('active');
+    document.getElementById('scr-p-active').classList.add('active');
+    showToast(SID, '🔴 Patrullaje iniciado');
+    // Animate counters
+    const positions = [
+      {left:'50%',top:'50%'},{left:'53%',top:'47%'},{left:'57%',top:'44%'},
+      {left:'60%',top:'42%'},{left:'63%',top:'45%'},{left:'65%',top:'48%'},
+      {left:'63%',top:'52%'},{left:'60%',top:'55%'}
+    ];
+    let posIdx = 0;
+    patrolTimer = setInterval(() => {
+      seconds++;
+      meters += 8 + Math.floor(Math.random()*5);
+      gpsPoints++;
+      const mins = String(Math.floor(seconds/60)).padStart(2,'0');
+      const secs = String(seconds%60).padStart(2,'0');
+      const d = document.getElementById('sp-dist');
+      const t = document.getElementById('sp-time');
+      const p = document.getElementById('sp-pts');
+      if (d) d.textContent = meters + ' m';
+      if (t) t.textContent = mins + ':' + secs;
+      if (p) p.textContent = gpsPoints;
+      // Move "you" dot
+      if (posIdx < positions.length) {
+        const you = document.getElementById('sp-you');
+        if (you) { you.style.left = positions[posIdx].left; you.style.top = positions[posIdx].top; }
+        posIdx++;
+      }
+    }, 800);
+  };
+
+  window.simPatrolFinish = function() {
+    if (patrolTimer) clearInterval(patrolTimer);
+    stepIdx = 6; updateSteps(SID, steps, 6);
+    showToast(SID, '✅ Patrullaje guardado');
+    setTimeout(() => {
+      document.getElementById('scr-p-active').classList.remove('active');
+      document.getElementById('scr-p-done').classList.add('active');
+      showCongrats(SID);
+      unlockSimStep(moduloActual, pasoActual);
+    }, 600);
+  };
+}
+
+// ---- SIMULADOR 3: EVENTO ----
+function bootSimEvent() {
+  const wrap = document.getElementById('sim-event-wrap');
+  if (!wrap) return;
+  const SID = 'event';
+  const steps = [
+    'Seleccionar la categoría',
+    'Buscar el formulario a llenar',
+    'Completar los campos',
+    'Agregar fotografías',
+    'Enviar el reporte',
+    'Ver el evento en el mapa'
+  ];
+  let stepIdx = 0;
+  let fotos = { panoramica: false, acercamiento: false, escala: false };
+  let formFilled = false;
+
+  wrap.innerHTML = phoneHTML(SID, `
+    <!-- PANTALLA: MAPA con botón + -->
+    <div class="app-screen active" id="scr-e-map">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="logo-small">🌿</div><h3>EarthRanger · Patrullaje activo</h3></div>
+      <div class="fake-map" style="height:190px">
+        <div class="map-road" style="width:3px;height:100%;left:50%;top:0"></div>
+        <div class="map-road" style="width:100%;height:3px;left:0;top:50%"></div>
+        <div class="map-you"></div>
+        <div class="map-label">🔴 Patrullaje en curso</div>
+      </div>
+      <div class="app-body" style="padding:10px">
+        <div style="background:#e3f2fd;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #1565c0;margin-bottom:10px">
+          👉 <strong>Encontraste evidencia de cacería.</strong> Toca el botón <strong>"+"</strong> para registrar el evento.
+        </div>
+        <button class="sim-btn primary" style="font-size:18px;padding:12px" onclick="simEventStep1()">＋ Nuevo Evento</button>
+        <div class="tap-hint" style="margin-top:6px">👆 Toca aquí para registrar</div>
+      </div>
+    </div>
+    <!-- PANTALLA: CATEGORÍAS -->
+    <div class="app-screen" id="scr-e-cat">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simEventBack('scr-e-map','scr-e-cat')">←</div><h3>Tipo de Evento</h3></div>
+      <div class="app-body">
+        <p style="font-size:10px;color:#666;margin-bottom:10px">¿Qué tipo de evento quieres registrar?</p>
+        <div class="cat-grid">
+          <div class="cat-card" style="background:#fff3e0" onclick="simEventSelectCat('amenazas')">
+            <div class="cat-icon">⚠️</div>
+            <div class="cat-name">Monitoreo de Amenazas</div>
+          </div>
+          <div class="cat-card" style="background:#e8f5e9" onclick="simEventSelectCat('biologico')">
+            <div class="cat-icon">🦜</div>
+            <div class="cat-name">Monitoreo Biológico</div>
+          </div>
+          <div class="cat-card" style="background:#e3f2fd" onclick="simEventSelectCat('actividades')">
+            <div class="cat-icon">📊</div>
+            <div class="cat-name">Monitoreo de Actividades</div>
+          </div>
+          <div class="cat-card" style="background:#f3e5f5" onclick="simEventSelectCat('patrullaje')">
+            <div class="cat-icon">🚶</div>
+            <div class="cat-name">Datos de Patrullaje</div>
+          </div>
+        </div>
+        <div style="background:#fff3e0;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #ff9800;margin-top:10px">
+          👉 Toca <strong>"Monitoreo de Amenazas"</strong> (hay evidencia de cacería)
+        </div>
+      </div>
+    </div>
+    <!-- PANTALLA: TIPO DE EVENTO -->
+    <div class="app-screen" id="scr-e-type">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simEventBack('scr-e-cat','scr-e-type')">←</div><h3>⚠️ Amenazas</h3></div>
+      <div class="app-body">
+        <p style="font-size:10px;color:#666;margin-bottom:8px">Selecciona el formulario:</p>
+        <ul class="event-list">
+          <li onclick="simEventSelectType('Cacería Ilegal','🏹')">
+            <div class="ev-icon" style="background:#fff3e0">🏹</div> Cacería Ilegal <span class="ev-arrow">›</span>
+          </li>
+          <li onclick="simEventSelectType('Desbosque','🌳')">
+            <div class="ev-icon" style="background:#e8f5e9">🌳</div> Desbosque / Tala <span class="ev-arrow">›</span>
+          </li>
+          <li onclick="simEventSelectType('Ganadería','🐄')">
+            <div class="ev-icon" style="background:#fce4ec">🐄</div> Ganadería Ilegal <span class="ev-arrow">›</span>
+          </li>
+          <li onclick="simEventSelectType('Cultivos','🌱')">
+            <div class="ev-icon" style="background:#f3e5f5">🌱</div> Cultivos Ilegales <span class="ev-arrow">›</span>
+          </li>
+          <li onclick="simEventSelectType('Construcción','🏗️')">
+            <div class="ev-icon" style="background:#e3f2fd">🏗️</div> Construcción <span class="ev-arrow">›</span>
+          </li>
+          <li onclick="simEventSelectType('Caminos','🛤️')">
+            <div class="ev-icon" style="background:#fafafa">🛤️</div> Apertura de Caminos <span class="ev-arrow">›</span>
+          </li>
+        </ul>
+        <div style="background:#e8f5e9;border-radius:10px;padding:10px;font-size:10px;border-left:3px solid #27ae60;margin-top:8px">
+          👉 Toca <strong>"Cacería Ilegal"</strong>
+        </div>
+      </div>
+    </div>
+    <!-- PANTALLA: FORMULARIO EVENTO -->
+    <div class="app-screen" id="scr-e-form">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simEventBack('scr-e-type','scr-e-form')">←</div><h3>🏹 Cacería Ilegal</h3></div>
+      <div class="app-body">
+        <div style="background:#e3f2fd;border-radius:8px;padding:7px 10px;font-size:9px;margin-bottom:10px;display:flex;align-items:center;gap:6px">
+          <span>📍</span><span><strong>GPS capturado automáticamente.</strong> Lat: 15.8742° N · Lon: -84.3891° W</span>
+        </div>
+        <div class="sim-field">
+          <label>Tipo de evidencia *</label>
+          <select class="sim-select" id="se-evidencia" onchange="simEventFormCheck()">
+            <option value="">-- Selecciona --</option>
+            <option>Trampa activa</option>
+            <option>Trampa inactiva</option>
+            <option>Animal muerto</option>
+            <option>Casquillo de bala</option>
+            <option>Persona cazando</option>
+            <option>Rastro / huella</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label>Especie afectada</label>
+          <input class="sim-input" id="se-especie" placeholder="Ej: Venado cola blanca" oninput="simEventFormCheck()">
+        </div>
+        <div class="sim-field">
+          <label>Cantidad *</label>
+          <input class="sim-input" id="se-cantidad" type="number" placeholder="1" oninput="simEventFormCheck()">
+        </div>
+        <div class="sim-field">
+          <label>Estado *</label>
+          <select class="sim-select" id="se-estado" onchange="simEventFormCheck()">
+            <option value="">-- Selecciona --</option>
+            <option>Reciente (menos de 24 horas)</option>
+            <option>Vieja (más de 24 horas)</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label>Descripción</label>
+          <textarea class="sim-input" id="se-desc" placeholder="Describe lo que observaste con detalle..." style="height:55px;resize:none" oninput="simEventFormCheck()"></textarea>
+        </div>
+        <button class="sim-btn primary" id="se-next-btn" onclick="simEventGoPhotos()" disabled>Siguiente: Agregar Fotos →</button>
+      </div>
+    </div>
+    <!-- PANTALLA: FOTOS -->
+    <div class="app-screen" id="scr-e-photos">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header"><div class="back-btn" onclick="simEventBack('scr-e-form','scr-e-photos')">←</div><h3>📷 Agregar Fotos</h3></div>
+      <div class="app-body">
+        <p style="font-size:10px;font-weight:700;color:#333;margin-bottom:10px">Toca cada casilla para agregar una fotografía:</p>
+        <div style="margin-bottom:12px">
+          <p style="font-size:9px;color:#666;margin-bottom:6px;font-weight:700">1️⃣ Foto panorámica (de lejos – muestra el lugar)</p>
+          <div class="foto-slots">
+            <div class="foto-slot" id="foto-panoramica" onclick="simTakePhoto('panoramica')">
+              <span>📷</span>
+              <span class="slot-label">Panorámica</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <p style="font-size:9px;color:#666;margin-bottom:6px;font-weight:700">2️⃣ Foto de acercamiento (de cerca – la evidencia)</p>
+          <div class="foto-slots">
+            <div class="foto-slot" id="foto-acercamiento" onclick="simTakePhoto('acercamiento')">
+              <span>📷</span>
+              <span class="slot-label">Acercamiento</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <p style="font-size:9px;color:#666;margin-bottom:6px;font-weight:700">3️⃣ Foto con escala (pon tu mano junto a la evidencia)</p>
+          <div class="foto-slots">
+            <div class="foto-slot" id="foto-escala" onclick="simTakePhoto('escala')">
+              <span>📷</span>
+              <span class="slot-label">Con escala</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fff3e0;border-radius:10px;padding:8px;font-size:9px;border-left:3px solid #ff9800;margin-bottom:10px">
+          👉 Toca cada casilla de foto para simular tomarla. <strong>Necesitas las 3 fotos.</strong>
+        </div>
+        <button class="sim-btn primary" id="se-send-btn" onclick="simEventSend()" disabled>📤 Enviar Reporte</button>
+      </div>
+    </div>
+    <!-- PANTALLA: ÉXITO -->
+    <div class="app-screen" id="scr-e-done">
+      <div class="status-bar"><span>9:41</span><div class="sb-right"><span>📶</span><span>🔋</span></div></div>
+      <div class="app-header" style="background:#1a7a4a"><h3>✅ Evento Registrado</h3></div>
+      <div class="app-body">
+        <div style="text-align:center;padding:16px 0 10px">
+          <div style="font-size:44px;margin-bottom:8px">🎯</div>
+          <p style="font-size:13px;font-weight:800;color:#1a7a4a;margin-bottom:4px">¡Reporte enviado!</p>
+          <p style="font-size:10px;color:#888;margin-bottom:14px">El evento aparecerá en EarthRanger Web.</p>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:10px">
+          <p style="font-size:10px;font-weight:800;margin-bottom:8px">📋 Resumen del reporte:</p>
+          <div style="font-size:9px;color:#555;display:flex;flex-direction:column;gap:5px">
+            <div>🏹 <strong>Tipo:</strong> Cacería Ilegal</div>
+            <div>📍 <strong>GPS:</strong> 15.8742°N / 84.3891°W</div>
+            <div>📷 <strong>Fotos:</strong> 3 adjuntas</div>
+            <div>🕐 <strong>Hora:</strong> 09:41 am</div>
+            <div>📡 <strong>Estado:</strong> Sincronizado ✓</div>
+          </div>
+        </div>
+        <div class="sim-complete-banner"><span style="font-size:22px">✅</span><span>¡Evento registrado con éxito en el sistema!</span></div>
+      </div>
+    </div>
+  `);
+
+  updateSteps(SID, steps, 0);
+
+  window.simEventBack = function(show, hide) {
+    document.getElementById(hide).classList.remove('active');
+    document.getElementById(show).classList.add('active');
+  };
+
+  window.simEventStep1 = function() {
+    stepIdx = 1; updateSteps(SID, steps, 1);
+    showToast(SID, '📋 Selecciona la categoría');
+    setTimeout(() => {
+      document.getElementById('scr-e-map').classList.remove('active');
+      document.getElementById('scr-e-cat').classList.add('active');
+    }, 300);
+  };
+
+  window.simEventSelectCat = function(cat) {
+    if (cat !== 'amenazas') { showToast(SID, '⚠️ Selecciona "Monitoreo de Amenazas"'); return; }
+    stepIdx = 2; updateSteps(SID, steps, 2);
+    showToast(SID, '✅ Categoría: Amenazas');
+    setTimeout(() => {
+      document.getElementById('scr-e-cat').classList.remove('active');
+      document.getElementById('scr-e-type').classList.add('active');
+    }, 400);
+  };
+
+  window.simEventSelectType = function(type, icon) {
+    if (type !== 'Cacería Ilegal') { showToast(SID, '⚠️ Selecciona "Cacería Ilegal"'); return; }
+    stepIdx = 3; updateSteps(SID, steps, 3);
+    showToast(SID, '✅ Formulario: ' + type);
+    setTimeout(() => {
+      document.getElementById('scr-e-type').classList.remove('active');
+      document.getElementById('scr-e-form').classList.add('active');
+    }, 400);
+  };
+
+  window.simEventFormCheck = function() {
+    const ev = document.getElementById('se-evidencia')?.value;
+    const cant = document.getElementById('se-cantidad')?.value;
+    const est = document.getElementById('se-estado')?.value;
+    const btn = document.getElementById('se-next-btn');
+    const ready = ev && cant && est;
+    if (btn) btn.disabled = !ready;
+    if (ready && stepIdx === 3) { stepIdx = 4; updateSteps(SID, steps, 4); }
+  };
+
+  window.simEventGoPhotos = function() {
+    stepIdx = 4; updateSteps(SID, steps, 4);
+    document.getElementById('scr-e-form').classList.remove('active');
+    document.getElementById('scr-e-photos').classList.add('active');
+    showToast(SID, '📷 Agrega las fotos de evidencia');
+  };
+
+  window.simTakePhoto = function(tipo) {
+    fotos[tipo] = true;
+    const slot = document.getElementById('foto-' + tipo);
+    if (slot) {
+      const emojis = { panoramica: '🌲', acercamiento: '🔍', escala: '✋' };
+      slot.classList.add('filled');
+      slot.innerHTML = `<span style="font-size:22px">${emojis[tipo]}</span><span class="slot-label" style="color:#27ae60;font-weight:800">✓ Lista</span>`;
+      showToast(SID, '📷 Foto capturada: ' + tipo);
+    }
+    const todas = fotos.panoramica && fotos.acercamiento && fotos.escala;
+    const btn = document.getElementById('se-send-btn');
+    if (btn) btn.disabled = !todas;
+    if (todas && stepIdx === 4) { stepIdx = 5; updateSteps(SID, steps, 5); showToast(SID, '✅ 3 fotos listas. Toca Enviar.'); }
+  };
+
+  window.simEventSend = function() {
+    stepIdx = 6; updateSteps(SID, steps, 6);
+    showToast(SID, '📡 Enviando reporte...');
+    setTimeout(() => {
+      document.getElementById('scr-e-photos').classList.remove('active');
+      document.getElementById('scr-e-done').classList.add('active');
+      showCongrats(SID);
+      unlockSimStep(moduloActual, pasoActual);
+    }, 1200);
+  };
+}
+
+// ---- DISPATCHER ----
+function bootSimulator(type) {
+  if (type === 'login') bootSimLogin();
+  else if (type === 'patrol') bootSimPatrol();
+  else if (type === 'event') bootSimEvent();
+}
+
+// ============================================================
+// FUNCIONES DE LOGIN Y CERTIFICADO
+// ============================================================
+
+function iniciarCursoClickHandler() {
+  console.log('=== iniciarCursoClickHandler() ejecutándose ===');
+  
+  // Manejador compatible con iOS para el botón de login
+  const nombre = document.getElementById('nombre');
+  const apellido = document.getElementById('apellido');
+  
+  if (!nombre || !apellido) {
+    console.error('Elementos de la forma no encontrados');
+    alert('Error: formulario no encontrado');
+    return;
+  }
+  
+  const nombreVal = nombre.value.trim();
+  const apellidoVal = apellido.value.trim();
+  
+  console.log('Nombre:', nombreVal, 'Apellido:', apellidoVal);
+  
+  // Validar campos
+  if (!nombreVal) {
+    alert('Por favor ingresa tu primer nombre');
+    nombre.focus();
+    return;
+  }
+  
+  if (!apellidoVal) {
+    alert('Por favor ingresa tu apellido');
+    apellido.focus();
+    return;
+  }
+  
+  console.log('Validación exitosa, iniciando curso...');
+  
+  // Blur focus para cerrar teclado
+  setTimeout(() => {
+    nombre.blur();
+    apellido.blur();
+  }, 50);
+  
+  // Llamar función principal con delay para asegurar que el teclado se cierre
+  setTimeout(() => {
+    iniciarCurso({ preventDefault: () => {} });
+  }, 200);
+}
+
+function iniciarCurso(event) {
+  console.log('=== iniciarCurso() ejecutándose ===');
+  
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
+  
+  try {
+    const nombreEl = document.getElementById('nombre');
+    const apellidoEl = document.getElementById('apellido');
+    
+    if (!nombreEl || !apellidoEl) {
+      console.error('Elementos no encontrados:', { nombreEl, apellidoEl });
+      alert('Error: no se pudieron encontrar los campos del formulario');
+      return;
+    }
+    
+    nombreUsuario = nombreEl.value.trim();
+    apellidoUsuario = apellidoEl.value.trim();
+    
+    console.log('Usuario cargado:', nombreUsuario, apellidoUsuario);
+    
+    if (!nombreUsuario || !apellidoUsuario) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+    
+    // Guardar en localStorage con manejo de errores para modo privado
+    try {
+      localStorage.setItem('nombreUsuario', nombreUsuario);
+      localStorage.setItem('apellidoUsuario', apellidoUsuario);
+      console.log('✓ Datos guardados en localStorage');
+    } catch (e) {
+      console.warn('localStorage no disponible (modo privado):', e);
+    }
+    
+    console.log('Ocultando login...');
+    const loginContainer = document.getElementById('loginContainer');
+    if (loginContainer) loginContainer.classList.add('hidden');
+    
+    const headerMain = document.getElementById('headerMain');
+    if (headerMain) headerMain.style.display = '';
+    
+    const appMain = document.getElementById('appMain');
+    if (appMain) appMain.style.display = '';
+    
+    console.log('Inicializando curso...');
+    
+    initProgreso();
+    renderSidebar();
+    renderMain();
+    actualizarProgreso();
+    
+    console.log('✓ CURSO INICIADO CORRECTAMENTE');
+  } catch (err) {
+    console.error('❌ Error grave en iniciarCurso:', err);
+    console.error('Stack:', err.stack);
+    alert('Error al cargar: ' + err.message);
+  }
+}
+
+function mostrarCertificado(notaFinal) {
+  document.getElementById('certName').textContent = `${nombreUsuario} ${apellidoUsuario}`;
+  document.getElementById('certScore').textContent = `${notaFinal}%`;
+  
+  const hoy = new Date();
+  const fecha = hoy.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('certDate').textContent = `${fecha}`;
+  
+  // Mostrar el certificado PRIMERO (visible para el usuario)
+  document.getElementById('certificateContainer').classList.remove('hidden');
+  document.getElementById('emailStatus').textContent = 'Enviando notificación por correo...';
+  document.getElementById('sharedStatus').textContent = 'Guardando resultados en segundo plano...';
+  
+  // Enviar email en segundo plano
+  setTimeout(() => {
+    enviarCertificadoPorEmail(notaFinal);
+  }, 500);
+  
+  // Guardar resultados centralizados en segundo plano (SIN redirigir)
+  if (SHEET_FORM_ACTION) {
+    setTimeout(() => {
+      enviarResultadosCompartidosSilencioso(notaFinal);
+    }, 1000);
+  }
+  
+  // El certificado se mantiene visible indefinidamente hasta que el usuario presione un botón
+  // NO se cierra automáticamente
+}
+
+function descargarCertificado() {
+  const nombreArchivo = `Certificado_${nombreUsuario}_${apellidoUsuario}.png`;
+  
+  // Generar con canvas (compatible con iOS)
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  canvas.width = 1200;
+  canvas.height = 900;
+  
+  // Fondo degradado
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  gradient.addColorStop(0, '#fffef5');
+  gradient.addColorStop(1, '#f9f5ed');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Bordes
+  ctx.strokeStyle = '#0d5c35';
+  ctx.lineWidth = 8;
+  ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
+  
+  // Título
+  ctx.fillStyle = '#0d5c35';
+  ctx.font = 'bold 52px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('🎓 CERTIFICADO DE FINALIZACIÓN', canvas.width / 2, 120);
+  
+  // Subtítulo
+  ctx.font = '26px Arial';
+  ctx.fillStyle = '#1a7a4a';
+  ctx.fillText('Espacio Interactivo EarthRanger - SSINAPH', canvas.width / 2, 180);
+  
+  // Línea decorativa
+  ctx.strokeStyle = '#1a7a4a';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(150, 210);
+  ctx.lineTo(canvas.width - 150, 210);
+  ctx.stroke();
+  
+  // Contenido
+  ctx.fillStyle = '#555555';
+  ctx.font = '20px Arial';
+  ctx.fillText('Se otorga el presente certificado a', canvas.width / 2, 280);
+  
+  // Nombre
+  ctx.font = 'bold 44px Arial';
+  ctx.fillStyle = '#0d5c35';
+  ctx.fillText(`${nombreUsuario.toUpperCase()} ${apellidoUsuario.toUpperCase()}`, canvas.width / 2, 380);
+  
+  // Texto
+  ctx.fillStyle = '#555555';
+  ctx.font = '18px Arial';
+  ctx.fillText('Por haber completado satisfactoriamente el', canvas.width / 2, 450);
+  ctx.fillText('Curso de Capacitación: Espacio Interactivo EarthRanger', canvas.width / 2, 490);
+  
+  ctx.fillText('Con una Nota Final de', canvas.width / 2, 560);
+  
+  // Nota
+  const notaFinal = document.getElementById('certScore').textContent;
+  ctx.font = 'bold 48px Arial';
+  ctx.fillStyle = '#d4a800';
+  ctx.fillText(notaFinal, canvas.width / 2, 650);
+  
+  // Fecha
+  ctx.fillStyle = '#999999';
+  ctx.font = 'italic 16px Arial';
+  const fecha = document.getElementById('certDate').textContent;
+  ctx.fillText(fecha, canvas.width / 2, 750);
+  
+  // Pie
+  ctx.fillStyle = '#999999';
+  ctx.font = '12px Arial';
+  ctx.fillText('Emitido digitalmente en reconocimiento del aprendizaje y dedicación', canvas.width / 2, 820);
+  
+  // Descargar - Compatible con iOS y desktop
+  try {
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = nombreArchivo;
+      document.body.appendChild(link);
+      
+      // iOS y Android pueden no soportar click, intentar con window.location
+      try {
+        link.click();
+      } catch(e) {
+        window.location.href = url;
+      }
+      
+      setTimeout(() => {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }, 'image/png');
+  } catch(e) {
+    console.error('Error descargando certificado:', e);
+    alert('Error al descargar. Intenta de nuevo.');
+  }
+}
+
+function exportarResultadosCSV() {
+  const rows = [];
+  rows.push(["Nombre", "Apellido", "Curso", "Módulo", "Paso", "Pregunta", "Respuesta elegida", "Correcta", "Estado", "Nota final"]);
+
+  let totalCorrectas = 0;
+  let totalPreguntas = 0;
+
+  curso.modulos.forEach(m => {
+    m.pasos.forEach((paso, idx) => {
+      if (!paso.quiz) return;
+      totalPreguntas++;
+      const qkey = `${m.id}_${idx}`;
+      const seleccion = quizRespondido[qkey];
+      const respuestaTexto = seleccion != null ? paso.quiz.opciones[seleccion] : 'Sin respuesta';
+      const correctaTexto = paso.quiz.opciones[paso.quiz.correcta];
+      const esCorrecta = seleccion === paso.quiz.correcta;
+      if (esCorrecta) totalCorrectas++;
+      rows.push([
+        nombreUsuario,
+        apellidoUsuario,
+        'Espacio Interactivo EarthRanger - SSINAPH',
+        m.nombre,
+        paso.titulo,
+        paso.quiz.pregunta,
+        respuestaTexto,
+        correctaTexto,
+        esCorrecta ? 'Correcta' : 'Incorrecta',
+        ''
+      ]);
+    });
+  });
+
+  const notaFinal = totalPreguntas === 0 ? 100 : Math.round((totalCorrectas / totalPreguntas) * 100);
+  rows.push([]);
+  rows.push(['Nombre', 'Apellido', 'Curso', 'Nota final', '', '', '', '', '', notaFinal + '%']);
+
+  const csvContent = rows.map(r => r.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  link.setAttribute('href', url);
+  link.setAttribute('download', `Resultados_${nombreUsuario}_${apellidoUsuario}.csv`);
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function enviarCertificadoPorEmail(notaFinal) {
+  const datos = {
+    nombre: `${nombreUsuario} ${apellidoUsuario}`,
+    nota: notaFinal,
+    fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+    curso: 'Espacio Interactivo EarthRanger - SSINAPH'
+  };
+  
+  const emailStatus = document.getElementById('emailStatus');
+  emailStatus.textContent = 'Enviando notificación por correo... Puede tardar unos minutos. Revisa SPAM si no llega.';
+
+  const formData = new FormData();
+  formData.append('Participante', datos.nombre);
+  formData.append('Nota Final', `${datos.nota}%`);
+  formData.append('Fecha', datos.fecha);
+  formData.append('Curso', datos.curso);
+  formData.append('_subject', `Certificado de Finalización: ${datos.nombre}`);
+  formData.append('_captcha', 'false');
+  formData.append('_next', window.location.href);
+  formData.append('_replyto', 'no-reply@earthranger.test');
+
+  fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        emailStatus.textContent = 'Notificación enviada correctamente al correo.';
+        console.log('Email enviado correctamente a', EMAIL_DESTINO);
+      } else {
+        console.log('Fallback a envío por formulario oculto:', data);
+        enviarCertificadoPorFormulario(datos);
+      }
+    })
+    .catch(err => {
+      console.log('Error enviando email automático:', err);
+      enviarCertificadoPorFormulario(datos);
+    });
+}
+
+function reenviarNotificacion() {
+  const scoreText = document.getElementById('certScore')?.textContent || '0%';
+  const notaFinal = parseInt(scoreText.replace('%', ''), 10) || 0;
+  enviarCertificadoPorEmail(notaFinal);
+}
+
+function generarResumenRespuestas() {
+  const lineas = [];
+  curso.modulos.forEach(m => {
+    m.pasos.forEach((paso, idx) => {
+      if (!paso.quiz) return;
+      const qkey = `${m.id}_${idx}`;
+      const seleccion = quizRespondido[qkey];
+      const respuestaTexto = seleccion != null ? paso.quiz.opciones[seleccion] : 'Sin respuesta';
+      const correctaTexto = paso.quiz.opciones[paso.quiz.correcta];
+      const estado = seleccion === paso.quiz.correcta ? 'Correcta' : 'Incorrecta';
+      lineas.push(`${m.nombre} › ${paso.titulo}: ${respuestaTexto} (${estado}) / Correcta: ${correctaTexto}`);
+    });
+  });
+  return lineas.join('\n');
+}
+
+// Nueva función: Enviar resultados SIN redirigir (silencioso)
+function enviarResultadosCompartidosSilencioso(notaFinal) {
+  const sharedStatus = document.getElementById('sharedStatus');
+  if (!SHEET_FORM_ACTION) {
+    if (sharedStatus) sharedStatus.textContent = 'No hay formulario central configurado.';
+    return;
+  }
+
+  const datos = {
+    participante: `${nombreUsuario} ${apellidoUsuario}`,
+    curso: 'Espacio Interactivo EarthRanger - SINAPH',
+    nota: `${notaFinal}%`,
+    fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+    resumen: generarResumenRespuestas()
+  };
+
+  const evaluationData = collectEvaluationDefaults();
+
+  // Usar iframe completamente oculto y silencioso
+  let iframe = document.getElementById('silentFormSubmitIframe');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'silentFormSubmitIframe';
+    iframe.name = 'silentFormSubmitIframe';
+    iframe.style.display = 'none';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = 'none';
+    document.body.appendChild(iframe);
+  }
+  
+  // Crear formulario temporal
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = SHEET_FORM_ACTION;
+  form.target = 'silentFormSubmitIframe';
+  form.style.display = 'none';
+
+  appendGoogleFormMetadata(form);
+
+  const fields = [
+    { key: 'participante', value: datos.participante },
+    { key: 'curso', value: datos.curso },
+    { key: 'nota', value: datos.nota },
+    { key: 'fecha', value: datos.fecha },
+    { key: 'resumen', value: datos.resumen },
+    { key: 'q1', value: evaluationData.q1 },
+    { key: 'q2', value: evaluationData.q2 },
+    { key: 'q3', value: evaluationData.q3 },
+    { key: 'q4', value: evaluationData.q4 },
+    { key: 'q5', value: evaluationData.q5 },
+    { key: 'q6', value: evaluationData.q6 }
+  ];
+
+  fields.forEach(field => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = GOOGLE_FORM_FIELDS[field.key];
+    input.value = field.value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+  
+  // Limpiar formulario después de enviar
+  setTimeout(() => {
+    try {
+      document.body.removeChild(form);
+    } catch(e) {
+      // Ignorar errores de limpieza
+    }
+    if (sharedStatus) {
+      sharedStatus.textContent = '✅ Resultados enviados. Verifica tu Google Sheet en 1-2 minutos.';
+    }
+    console.log('Datos enviados silenciosamente a Google Sheets:', datos);
+  }, 200);
+}
+
+function enviarResultadosCompartidos(notaFinal) {
+  const sharedStatus = document.getElementById('sharedStatus');
+  if (!SHEET_FORM_ACTION) {
+    if (sharedStatus) sharedStatus.textContent = 'No hay formulario central configurado. Ajusta SHEET_FORM_ACTION en el código.';
+    return;
+  }
+
+  const datos = {
+    participante: `${nombreUsuario} ${apellidoUsuario}`,
+    curso: 'Espacio Interactivo EarthRanger - SINAPH',
+    nota: `${notaFinal}%`,
+    fecha: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+    resumen: generarResumenRespuestas()
+  };
+
+  const evaluationData = collectEvaluationDefaults();
+  sharedStatus.textContent = 'Guardando resultados en el registro central...';
+
+  // Usar formulario oculto para envío más confiable a Google Forms
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = SHEET_FORM_ACTION;
+  form.style.display = 'none';
+
+  appendGoogleFormMetadata(form);
+
+  const fields = [
+    { key: 'participante', value: datos.participante },
+    { key: 'curso', value: datos.curso },
+    { key: 'nota', value: datos.nota },
+    { key: 'fecha', value: datos.fecha },
+    { key: 'resumen', value: datos.resumen },
+    { key: 'q1', value: evaluationData.q1 },
+    { key: 'q2', value: evaluationData.q2 },
+    { key: 'q3', value: evaluationData.q3 },
+    { key: 'q4', value: evaluationData.q4 },
+    { key: 'q5', value: evaluationData.q5 },
+    { key: 'q6', value: evaluationData.q6 }
+  ];
+
+  fields.forEach(field => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = GOOGLE_FORM_FIELDS[field.key];
+    input.value = field.value;
+    form.appendChild(input);
+  });
+
+  // Crear iframe oculto para evitar recargar la página en iOS
+  let iframe = document.getElementById('formSubmitIframe');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'formSubmitIframe';
+    iframe.name = 'formSubmitIframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+  
+  form.target = 'formSubmitIframe';
+  document.body.appendChild(form);
+  form.submit();
+  
+  setTimeout(() => {
+    document.body.removeChild(form);
+    sharedStatus.textContent = '✅ Resultados guardados. Verifica tu Google Sheet en 1-2 minutos.';
+    console.log('Datos enviados a Google Sheets:', datos);
+  }, 100);
+}
+
+function enviarCertificadoPorFormulario(datos) {
+  const emailStatus = document.getElementById('emailStatus');
+  emailStatus.textContent = 'Enviando notificación por correo (fallback)...';
+
+  document.getElementById('emailSubject').value = `Certificado de Finalización: ${datos.nombre}`;
+  document.getElementById('emailNext').value = window.location.href;
+  document.getElementById('emailParticipante').value = datos.nombre;
+  document.getElementById('emailNotaFinal').value = `${datos.nota}%`;
+  document.getElementById('emailFecha').value = datos.fecha;
+  document.getElementById('emailCurso').value = datos.curso;
+
+  document.getElementById('emailForm').submit();
+  setTimeout(() => {
+    emailStatus.textContent = 'Notificación enviada (modo formulario oculto). Revisa tu correo. Si no llega, revisa SPAM o presiona Reenviar.';
+  }, 1000);
+}
+
+// ============================================================
+// EVALUATION MODULE
+// ============================================================
+
+function enviarEvaluacion() {
+  const evalStatus = document.getElementById('evalStatus');
+  
+  // Validar que todas las preguntas 1-5 tengan respuesta
+  const q1 = document.querySelector('input[name="q1"]:checked');
+  const q2 = document.querySelector('input[name="q2"]:checked');
+  const q3 = document.querySelector('input[name="q3"]:checked');
+  const q4 = document.querySelector('input[name="q4"]:checked');
+  const q5 = document.querySelector('input[name="q5"]:checked');
+  
+  if (!q1 || !q2 || !q3 || !q4 || !q5) {
+    evalStatus.textContent = '❌ Por favor, responde todas las preguntas de escala (1-5)';
+    evalStatus.style.color = 'var(--rojo)';
+    return;
+  }
+  
+  const q6 = document.getElementById('q6').value;
+  
+  evalStatus.textContent = 'Enviando evaluación...';
+  evalStatus.style.color = 'var(--azul)';
+  
+  // Verificar si EVALUATION_FIELDS está configurado
+  if (!EVALUATION_FIELDS.q1 || !EVALUATION_FIELDS.q2 || !EVALUATION_FIELDS.q3 || 
+      !EVALUATION_FIELDS.q4 || !EVALUATION_FIELDS.q5 || !EVALUATION_FIELDS.q6) {
+    evalStatus.textContent = '⚠️ Los campos de evaluación aún no están configurados. Contacta al administrador.';
+    evalStatus.style.color = 'var(--naranja)';
+    console.warn('EVALUATION_FIELDS no está completamente configurado:', EVALUATION_FIELDS);
+    
+    // Intenta guardar localmente como fallback
+    try {
+      const evaluationData = {
+        participante: `${nombreUsuario} ${apellidoUsuario}`,
+        q1: q1.value,
+        q2: q2.value,
+        q3: q3.value,
+        q4: q4.value,
+        q5: q5.value,
+        q6: q6,
+        fecha: new Date().toLocaleDateString('es-ES')
+      };
+      localStorage.setItem('evaluationData', JSON.stringify(evaluationData));
+      evalStatus.textContent = '✅ Evaluación guardada localmente. Se enviará cuando se configure Google Forms.';
+      evalStatus.style.color = 'var(--verde)';
+    } catch(e) {
+      console.error('Error guardando evaluación:', e);
+    }
+    return;
+  }
+  
+  // Crear formulario para enviar a Google Forms - SILENCIOSAMENTE sin redirección
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = SHEET_FORM_ACTION;
+  form.style.display = 'none';
+
+  appendGoogleFormMetadata(form);
+  
+  const fields = [
+    { key: 'q1', value: q1.value },
+    { key: 'q2', value: q2.value },
+    { key: 'q3', value: q3.value },
+    { key: 'q4', value: q4.value },
+    { key: 'q5', value: q5.value },
+    { key: 'q6', value: q6 }
+  ];
+  
+  fields.forEach(field => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = EVALUATION_FIELDS[field.key];
+    input.value = field.value;
+    form.appendChild(input);
+  });
+  
+  // Usar iframe SILENCIOSO para evitar redirecciones
+  let iframe = document.getElementById('evaluationSilentIframe');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'evaluationSilentIframe';
+    iframe.name = 'evaluationSilentIframe';
+    iframe.style.display = 'none';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = 'none';
+    document.body.appendChild(iframe);
+  }
+  
+  form.target = 'evaluationSilentIframe';
+  document.body.appendChild(form);
+  form.submit();
+  
+  setTimeout(() => {
+    try {
+      document.body.removeChild(form);
+    } catch(e) {
+      // Ignorar errores
+    }
+    evalStatus.textContent = '✅ ¡Gracias por tu evaluación! Tus respuestas han sido registradas.';
+    evalStatus.style.color = 'var(--verde)';
+    
+    // Guardar también en localStorage como backup
+    try {
+      const evaluationData = {
+        participante: `${nombreUsuario} ${apellidoUsuario}`,
+        q1: q1.value,
+        q2: q2.value,
+        q3: q3.value,
+        q4: q4.value,
+        q5: q5.value,
+        q6: q6,
+        fecha: new Date().toLocaleDateString('es-ES'),
+        hora: new Date().toLocaleTimeString('es-ES')
+      };
+      localStorage.setItem('evaluationData', JSON.stringify(evaluationData));
+      console.log('Evaluación enviada y guardada:', evaluationData);
+    } catch(e) {
+      console.error('Error guardando evaluación localmente:', e);
+    }
+    
+    // Completar el módulo después de enviar
+    setTimeout(() => {
+      completarModulo();
+    }, 1500);
+  }, 200);
+}
+
+function volverAlInicio() {
+  // Limpiar datos
+  localStorage.removeItem('nombreUsuario');
+  localStorage.removeItem('apellidoUsuario');
+  
+  // Recargar página
+  location.reload();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+// Mostrar siempre pantalla de acceso
+const nombreGuardado = localStorage.getItem('nombreUsuario');
+const apellidoGuardado = localStorage.getItem('apellidoUsuario');
+if (nombreGuardado) document.getElementById('nombre').value = nombreGuardado;
+if (apellidoGuardado) document.getElementById('apellido').value = apellidoGuardado;
+const emailForm = document.getElementById('emailForm');
+if (emailForm) {
+  emailForm.action = `https://formsubmit.co/${EMAIL_DESTINO}`;
+  document.getElementById('emailNext').value = window.location.href;
+}
+</script>
+</body>
+</html>
